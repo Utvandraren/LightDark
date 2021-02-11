@@ -17,7 +17,11 @@ public class GoToState : State
     {
         controller.navAgent.isStopped = false;
         controller.navAgent.speed = controller.runSpeed;
+        controller.navAgent.angularSpeed = controller.runAngularSpeed;
         controller.navAgent.destination = controller.startTarget.position;
+        controller.animator.SetBool("noticedSomething", true);
+
+        
     }
 
     public override void Update()
@@ -25,14 +29,17 @@ public class GoToState : State
         if (hasArrived())
             stateMachine.ChangeState(controller.idle);
 
-        if (!controller.canSeePlayer)
-            stateMachine.ChangeState(controller.idle);
+        //if (!controller.canSeePlayer)
+        //    stateMachine.ChangeState(controller.idle);
     }
 
     public override void Exit()
     {
         controller.navAgent.isStopped = true;
         controller.navAgent.speed = controller.walkSpeed;
+        controller.navAgent.angularSpeed = controller.walkAngularSpeed;
+        controller.animator.SetBool("noticedSomething", false);
+
     }
 
     bool hasArrived()

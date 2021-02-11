@@ -6,9 +6,11 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-
     public float walkSpeed;
     public float runSpeed;
+    [HideInInspector] public float walkAngularSpeed;
+    [HideInInspector] public float runAngularSpeed;
+
     public Transform[] waypoints;
 
     [HideInInspector]
@@ -42,6 +44,8 @@ public class AIController : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         walkSpeed = navAgent.speed;
+        walkAngularSpeed = navAgent.angularSpeed;
+        runAngularSpeed = walkAngularSpeed * 2f;
 
         stateMachine = new StateMachine();
         idle = new IdleState(stateMachine, this);
@@ -66,8 +70,13 @@ public class AIController : MonoBehaviour
         canSeePlayer = false;
     }
 
-    public void GoToTarget(Vector3 target)
+    //public void GoToTarget(Vector3 target)
+    //{
+    //    stateMachine.ChangeState(goTo);
+    //}
+    public void GoToPlayerLatestPosition()
     {
+        //NoticePlayer();
         stateMachine.ChangeState(goTo);
     }
 }

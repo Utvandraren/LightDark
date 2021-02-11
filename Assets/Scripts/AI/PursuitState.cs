@@ -17,6 +17,8 @@ public class PursuitState : State
     {
         controller.navAgent.isStopped = false;
         controller.navAgent.speed = controller.runSpeed;
+        controller.navAgent.angularSpeed = controller.runAngularSpeed;
+
         controller.animator.SetBool("seePlayer", true);
     }
 
@@ -32,6 +34,7 @@ public class PursuitState : State
     {
         controller.navAgent.isStopped = true;
         controller.navAgent.speed = controller.walkSpeed;
+        controller.navAgent.angularSpeed = controller.walkAngularSpeed;
         controller.animator.SetBool("seePlayer", false);
     }
 
