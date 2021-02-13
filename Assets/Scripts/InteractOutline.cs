@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class InteractOutline : MonoBehaviour
 {
-     GameObject outlineObj;
+    GameObject outlineObj;
     [SerializeField] GameObject textPrompt;
     Material outlineMaterial;
     [SerializeField] float timerOutline = 1f;
@@ -23,17 +23,22 @@ public class InteractOutline : MonoBehaviour
             Instantiate(textPrompt, outlineObj.transform);
         outlineObj.AddComponent<MeshFilter>();
         outlineObj.AddComponent<MeshRenderer>();
-        outlineObj.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
-        //outlineObj.GetComponent<MeshRenderer>().material = outlineMaterial;
-        outlineObj.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/OutlineMaterial");
+        TryGetComponent<MeshFilter>(out MeshFilter outMesh);
+        //outlineObj.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
+        if (outMesh != null)
+        {
+            outlineObj.GetComponent<MeshFilter>().mesh = outMesh.mesh;
+            //outlineObj.GetComponent<MeshRenderer>().material = outlineMaterial;
+            outlineObj.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/OutlineMaterial");
+            outlineObj.SetActive(false);
+        }
 
-        outlineObj.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       
+
 
     }
 
@@ -42,7 +47,7 @@ public class InteractOutline : MonoBehaviour
         coolDown -= Time.deltaTime;
         coolDown = Mathf.Clamp(coolDown, 0f, timerOutline);
 
-        if(coolDown <= 0f)
+        if (coolDown <= 0f)
         {
             outlineObj.SetActive(false);
         }
@@ -61,7 +66,7 @@ public class InteractOutline : MonoBehaviour
         //StartCoroutine(TimerContext());
     }
 
-    
+
 
     IEnumerator TimerContext()
     {
