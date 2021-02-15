@@ -835,12 +835,12 @@ GameObject:
   - component: {fileID: 7142033546751502055}
   - component: {fileID: 7142033546751502048}
   m_Layer: 11
-  m_Name: Point Light
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7142033546751502049
 Transform:
   m_ObjectHideFlags: 0
@@ -848,13 +848,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7142033546751502050}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.068, y: 0.09, z: -0.023}
+  m_LocalRotation: {x: 0.7260396, y: -0, z: -0, w: 0.68765295}
+  m_LocalPosition: {x: 0.068, y: 4.97, z: -0.023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7248298231620988939}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 93.11099, y: 0, z: 0}
 --- !u!108 &7142033546751502055
 Light:
   m_ObjectHideFlags: 0
@@ -864,16 +864,16 @@ Light:
   m_GameObject: {fileID: 7142033546751502050}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 0.83137256, a: 1}
-  m_Intensity: 47.746483
+  m_Intensity: 0.6445775
   m_Range: 10
-  m_SpotAngle: 30
+  m_SpotAngle: 112
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -912,7 +912,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 20000
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 10}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0.01
@@ -936,14 +936,14 @@ MonoBehaviour:
   m_ObsoleteContactShadows: 0
   m_PointlightHDType: 0
   m_SpotLightShape: 0
-  m_AreaLightShape: 0
-  m_Intensity: 600
+  m_AreaLightShape: 1
+  m_Intensity: 8.1
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
-  m_VolumetricDimmer: 1
+  m_VolumetricDimmer: 16
   m_LightUnit: 0
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_ShadowVariant: 0
   m_ShadowPrecision: 0
   useOldInspector: 0
-  useVolumetric: 1
+  useVolumetric: 0
   featuresFoldout: 1
   showAdditionalSettings: 0
   m_AreaLightEmissiveMeshShadowCastingMode: 0
@@ -1052,6 +1052,7 @@ GameObject:
   - component: {fileID: 1975358524}
   - component: {fileID: 2586848627491379544}
   - component: {fileID: 6649447360447724343}
+  - component: {fileID: 324058808}
   m_Layer: 11
   m_Name: oRB
   m_TagString: Untagged
@@ -1101,7 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6917c2422d464c8f3480ad1862106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Orb
+  item: {fileID: 11400000, guid: ef3f0df1e4de68d4eb20e6ac4c3ef813, type: 2}
 --- !u!135 &2586848627491379544
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1128,9 +1129,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requireKey: 0
+  requiredKeyItem: {fileID: 0}
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &324058808
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142033547348048520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f968333e6bac1e24296330c62ae307a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7142033547411396576
 PrefabInstance:
   m_ObjectHideFlags: 0

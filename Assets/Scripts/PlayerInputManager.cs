@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class PlayerInputManager : MonoBehaviour
 {
     public static Action OnOpenInventory;
+    [SerializeField] GameObject lightObj;
 
     // Update is called once per frame
     void Update()
@@ -24,5 +25,10 @@ public class PlayerInputManager : MonoBehaviour
 
             
         }
+        if (Input.GetButtonDown("Light"))
+            lightObj.SetActive(!lightObj.activeSelf);
+
     } 
+
+    
 }

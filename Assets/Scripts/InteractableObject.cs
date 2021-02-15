@@ -7,9 +7,11 @@ using UnityEngine.Events;
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] bool requireKey;
+    [SerializeField] ItemObj requiredKeyItem;
 
     UnityEvent onShowContext;
     [SerializeField] UnityEvent onInteract;
+   
 
 
     InteractOutline outlineScript;
@@ -30,7 +32,7 @@ public class InteractableObject : MonoBehaviour
 
     public void Interact()
     {
-        if (requireKey && Managers.Inventory.ContainsItem("key") == false)
+        if (requireKey && Managers.Inventory.ContainsItem(requiredKeyItem.itemName) == false)
             return;
         onInteract.Invoke();
     }

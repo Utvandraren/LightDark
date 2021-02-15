@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(InteractOutline))]
 public class CollectibleItem : MonoBehaviour
 {
-    [SerializeField] private string itemName;
+    [SerializeField] private ItemObj item;
 
     //void OnTriggerEnter(Collider other)
     //{
@@ -15,7 +15,7 @@ public class CollectibleItem : MonoBehaviour
 
     public void PickUp()
     {
-        Managers.Inventory.AddItem(itemName);
+        Managers.Inventory.AddItem(item.itemName);
         Destroy(gameObject);
     }
 

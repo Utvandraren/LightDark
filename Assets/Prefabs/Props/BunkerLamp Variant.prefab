@@ -83,13 +83,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 7.16e-43, y: 1.61e-43, z: 0, w: -1.9392915e-16}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -256,47 +256,47 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.31
+      value: 6.386
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.875
+      value: -20.83
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.500837
+      value: 0.5635784
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.49921396
+      value: -0.427059
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5007848
+      value: 0.5635784
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.49916163
+      value: -0.427059
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -180.006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90.186005
+      value: -74.307
       objectReference: {fileID: 0}
     - target: {fileID: -8247939662487336732, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
@@ -311,7 +311,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
       propertyPath: m_Name
-      value: BunkerLamp Variant
+      value: BunkerLamp Variant (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1e3b1bba14dd004b8092c9a90a2f9a3,
         type: 3}
