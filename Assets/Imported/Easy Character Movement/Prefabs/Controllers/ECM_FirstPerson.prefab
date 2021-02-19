@@ -807,6 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84232179b9d66bc4091592a84d6b8fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightObj: {fileID: 0}
 --- !u!114 &1517114646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,7 +918,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 82
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
