@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody),typeof(AudioSource))]
 public class DistractingObj : MonoBehaviour
 {
     [SerializeField] float velocityTreshold = 3f;
-    [SerializeField] float alertArea = 3f;
+    [SerializeField] float alertArea = 12f;
 
     AudioSource source;
     Rigidbody rb;
