@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
+    Transform playerTransform;
+
     public float walkSpeed;
     public float runSpeed;
     [HideInInspector] public float walkAngularSpeed;
@@ -41,6 +43,7 @@ public class AIController : MonoBehaviour
         index = Random.Range(0, waypoints.Length);
 
         startTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = startTarget;
         navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         walkSpeed = navAgent.speed;
@@ -70,13 +73,37 @@ public class AIController : MonoBehaviour
         canSeePlayer = false;
     }
 
-    //public void GoToTarget(Vector3 target)
-    //{
-    //    stateMachine.ChangeState(goTo);
-    //}
+    public void GoToTarget(Transform target)
+    {
+        startTarget = target;
+        stateMachine.ChangeState(goTo);
+    }
     public void GoToPlayerLatestPosition()
     {
         //NoticePlayer();
+        startTarget = playerTransform;
         stateMachine.ChangeState(goTo);
     }
+   
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PatrolArea"))
+        {
+            List<Transform> tempWaypoints = new List<Transform>();
+            foreach (Transform children in other.transform)
+            {
+                tempWaypoints.Add(children);
+            }
+            waypoints = tempWaypoints.ToArray();
+
+        }
+
+
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        
+    }
+
 }

@@ -28,6 +28,8 @@ public class PlayerInputManager : MonoBehaviour
         if (Input.GetButtonDown("Light"))
             lightObj.SetActive(!lightObj.activeSelf);
 
+       
+
     } 
 
     
