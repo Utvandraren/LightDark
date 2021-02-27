@@ -15,7 +15,7 @@ public class CollectibleItem : MonoBehaviour
 
     public void PickUp()
     {
-        Managers.Inventory.AddItem(item.itemName);
+        Managers.Inventory.AddItem(item);
         Destroy(gameObject);
     }
 

@@ -11,8 +11,6 @@ public class InteractableObject : MonoBehaviour
 
     UnityEvent onShowContext;
     [SerializeField] UnityEvent onInteract;
-   
-
 
     InteractOutline outlineScript;
     bool isShowingOutline = true;
@@ -32,7 +30,7 @@ public class InteractableObject : MonoBehaviour
 
     public void Interact()
     {
-        if (requireKey && Managers.Inventory.ContainsItem(requiredKeyItem.itemName) == false)
+        if (requireKey && Managers.Inventory.ContainsItem(requiredKeyItem) == false)
             return;
         onInteract.Invoke();
     }

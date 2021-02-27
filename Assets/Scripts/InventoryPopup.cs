@@ -13,12 +13,12 @@ public class InventoryPopup : MonoBehaviour
     [SerializeField] private Button equipButton;
     [SerializeField] private Button useButton;
 
-    private string _curItem;
+    private ItemObj _curItem;
 
    
     public void Refresh()
     {
-        List<string> itemList = Managers.Inventory.GetItemList();
+        List<ItemObj> itemList = Managers.Inventory.GetItemList();
         int len = itemIcons.Length;
         for (int i = 0; i < len; i++)
         {
@@ -26,8 +26,8 @@ public class InventoryPopup : MonoBehaviour
             {
                 itemIcons[i].gameObject.SetActive(true);
                 itemLabels[i].gameObject.SetActive(true);
-                string item = itemList[i];
-                Sprite sprite = Resources.Load<Sprite>("Icons/" + item);
+                ItemObj item = itemList[i];
+                Sprite sprite = Resources.Load<Sprite>("Icons/" + item.itemName);
                 itemIcons[i].sprite = sprite;
                 //itemIcons[i].SetNativeSize();
                 int count = Managers.Inventory.GetItemCount(item);
@@ -67,7 +67,7 @@ public class InventoryPopup : MonoBehaviour
         {
             curItemLabel.gameObject.SetActive(true);
             equipButton.gameObject.SetActive(true);
-            if (_curItem == "health")
+            if (_curItem.itemName == "health")
             {
             }
             else
@@ -78,7 +78,7 @@ public class InventoryPopup : MonoBehaviour
         }
     }
 
-    public void OnItem(string item)
+    public void OnItem(ItemObj item)
     {
         _curItem = item;
         Refresh();
@@ -93,7 +93,7 @@ public class InventoryPopup : MonoBehaviour
     public void OnUse()
     {
         Managers.Inventory.ConsumeItem(_curItem);
-        if (_curItem == "health")
+        if (_curItem.itemName == "health")
         {
             Managers.Player.ChangeHealth(25);
         }

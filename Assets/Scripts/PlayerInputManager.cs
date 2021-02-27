@@ -9,6 +9,7 @@ public class PlayerInputManager : MonoBehaviour
 {
     public static Action OnOpenInventory;
     [SerializeField] GameObject lightObj;
+    public Transform equipPoint;
 
     // Update is called once per frame
     void Update()
@@ -21,13 +22,13 @@ public class PlayerInputManager : MonoBehaviour
             Cursor.visible = obj.enabled;
             GetComponent<ECM.Components.MouseLook>().SetCursorLock(!obj.enabled);
             //GetComponent<ECM.Components.MouseLook>().UpdateCursorLock();
-            obj.enabled = !obj.enabled;
-
-            
+            obj.enabled = !obj.enabled;           
         }
         if (Input.GetButtonDown("Light"))
             lightObj.SetActive(!lightObj.activeSelf);
 
+        if (Input.GetButtonDown("Holster"))
+            Managers.Inventory.UnEquip();
        
 
     } 

@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour, IGameManager
 {
-   public ManagerStatus status { get; private set; }
-    public string equippedItem { get; private set; }
+    public ManagerStatus status { get; private set; }
+    public ItemObj equippedItem { get; private set; }
+    private GameObject instatiatedEquipment;
+    public Transform itemHook { get; private set; }
 
-    private Dictionary<string, int> _items;
+    private Dictionary<ItemObj, int> _items;
+    
 
     public void Startup()
     {
-        _items = new Dictionary<string, int>();
-
+        _items = new Dictionary<ItemObj, int>();
+        itemHook = FindObjectOfType<PlayerInputManager>().equipPoint;
         status = ManagerStatus.Started;
     }
 
-    private void DisplayItems()
-    {
-        string itemDisplay = "Items: ";
+    //private void DisplayItems()
+    //{
+    //    string itemDisplay = "Items: ";
 
-        foreach (KeyValuePair<string, int> item in _items)
-        {
-            itemDisplay += item.Key + "(" + item.Value + ") ";
-        }
+    //    foreach (KeyValuePair<string, int> item in _items)
+    //    {
+    //        itemDisplay += item.Key + "(" + item.Value + ") ";
+    //    }
 
-        Debug.Log(itemDisplay);
-    }
+    //    Debug.Log(itemDisplay);
+    //}
 
-    public void AddItem(string name)
+    public void AddItem(ItemObj name)
     {
         if(_items.ContainsKey(name))
         {
@@ -39,16 +42,16 @@ public class InventoryManager : MonoBehaviour, IGameManager
             _items[name] = 1;
         }
 
-        DisplayItems();
+        //DisplayItems();
     }
 
-    public List<string> GetItemList()
+    public List<ItemObj> GetItemList()
     {
-        List<string> list = new List<string>(_items.Keys);
+        List<ItemObj> list = new List<ItemObj>(_items.Keys);
         return list;
     }
 
-    public int GetItemCount(string name)
+    public int GetItemCount(ItemObj name)
     {
         if (_items.ContainsKey(name))
         {
@@ -57,18 +60,30 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return 0;
     }
 
-    public bool EquipItem(string name)
+    public bool EquipItem(ItemObj name)
     {
         if(_items.ContainsKey(name) && equippedItem != name)
         {
             equippedItem = name;
+            instatiatedEquipment = name.Equip();
             return true;
         }
         equippedItem = null;
         return false;
     }
 
-    public bool ConsumeItem(string name)
+    public void UnEquip()
+    {
+        if (equippedItem != null)
+        {
+            Destroy(instatiatedEquipment);
+            instatiatedEquipment = null;
+            equippedItem = null;
+                       
+        }
+    }
+
+    public bool ConsumeItem(ItemObj name)
     {
         if (_items.ContainsKey(name))
         {
@@ -82,11 +97,19 @@ public class InventoryManager : MonoBehaviour, IGameManager
                 return false;
             }
         }
-        DisplayItems();
+        //DisplayItems();
         return true;
     }
 
-    public bool ContainsItem(string name)
+//public void useQuippedItem()
+//    {
+//        if (equippedItem == null)
+//            return;
+
+
+//    }
+
+    public bool ContainsItem(ItemObj name)
     {
         if (_items.ContainsKey(name))
         {
