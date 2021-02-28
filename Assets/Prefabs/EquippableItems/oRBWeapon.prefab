@@ -1819,7 +1819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8116365643001037398}
   - component: {fileID: 1422722034534303329}
-  - component: {fileID: 1749778024314334976}
+  - component: {fileID: 5240618138992106807}
   m_Layer: 11
   m_Name: oRBWeapon
   m_TagString: Untagged
@@ -1835,7 +1835,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116365643001037393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 184.85, y: -74.76169, z: 62.506226}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8586577721529010386}
@@ -1861,29 +1861,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1749778024314334976
+--- !u!114 &5240618138992106807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8116365643001037393}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1742b6169e210394194a4cb417029b68, type: 3}
+  m_Script: {fileID: 11500000, guid: fe716e2316f96c644808068228da100a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  attack: {fileID: 0}
-  timeBetweenAttacks: 0
-  ammo: {fileID: 0}
-  startUpSound: {fileID: 0}
-  laserEffect: {fileID: 0}
-  laserHit: {fileID: 0}
-  maxRange: 100
-  laserThickness: 0.15
-  laserDuration: 0.5
-  anim: {fileID: 0}
+  scannerPrefab: {fileID: 9196427966641699024, guid: 79695a8147db7684d94b381c90c7d871,
+    type: 3}
 --- !u!1 &8962856350941270632
 GameObject:
   m_ObjectHideFlags: 0
