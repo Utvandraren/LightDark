@@ -1,0 +1,77 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+[RequireComponent(typeof(NavMeshAgent))]
+public class serviceRobot : MonoBehaviour
+{
+    [SerializeField] float alertArea = 10f;
+    NavMeshAgent agent;
+    Transform playerTransform;
+    bool seesPlayer = false;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+        Idle();
+    }
+
+    void FixedUpdate()
+    {
+        if (seesPlayer)
+            agent.destination = playerTransform.position;
+    }
+
+    public void SeePlayer()
+    {
+        agent.destination = playerTransform.position;
+        seesPlayer = true;
+        agent.isStopped = false;
+        StopAllCoroutines();
+    }
+
+    public void LoseSightOfPlayer()
+    {
+        seesPlayer = false;
+        agent.isStopped = true;
+    }
+
+    public void Idle()
+    {
+        StartCoroutine(ChangeRandomPosition());
+        agent.isStopped = false;
+        seesPlayer = false;
+    }
+
+    IEnumerator ChangeRandomPosition()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(8f);
+            Vector3 newPos = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+            agent.destination = transform.position + newPos;
+        }
+       
+    }
+
+    public void AlertNearbyEnemies()
+    {
+        //source.Play();
+        Collider[] collisions = Physics.OverlapSphere(transform.position, alertArea);
+        foreach (Collider collider in collisions)
+        {
+            if (collider.CompareTag("Enemy"))
+                collider.GetComponent<AIController>().GoToTarget(transform);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, alertArea);
+    }
+}

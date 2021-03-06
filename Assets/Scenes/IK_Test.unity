@@ -249,10 +249,6 @@ MonoBehaviour:
   m_Script: {fileID: 1887961736}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 1420245967}
 --- !u!4 &32997952
 Transform:
   m_ObjectHideFlags: 19
@@ -579,10 +575,6 @@ MonoBehaviour:
   m_Script: {fileID: 1887961736}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 1420245967}
 --- !u!4 &210979562
 Transform:
   m_ObjectHideFlags: 19
@@ -1317,7 +1309,6 @@ MonoBehaviour:
   m_Script: {fileID: 1887961736}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
 --- !u!4 &837164003
 Transform:
   m_ObjectHideFlags: 19
