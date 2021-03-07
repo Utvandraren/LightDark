@@ -61,6 +61,11 @@ public class AIController : MonoBehaviour
     void Update()
     {
         stateMachine.currentState.Update();
+
+        if(navAgent.isPathStale)
+        {
+            stateMachine.ChangeState(idle);
+        }
     }
 
     public void NoticePlayer()
