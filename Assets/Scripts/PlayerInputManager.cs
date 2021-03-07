@@ -11,6 +11,7 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] GameObject lightObj;
     public Transform equipPoint;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +29,7 @@ public class PlayerInputManager : MonoBehaviour
             lightObj.SetActive(!lightObj.activeSelf);
 
         if (Input.GetButtonDown("Holster"))
-            Managers.Inventory.UnEquip();
+            Managers.Inventory.ToogleHolster();
        
 
     } 

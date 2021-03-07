@@ -6,12 +6,16 @@ using UnityEngine;
 public class PlayerStats : Stats
 {
     public static Action<int> OnHealthChanged;
+    [SerializeField] ItemObj startItem;
    
     protected override void Start()
     {
         base.Start();
         OnHealthChanged(startingHealth);
+        Managers.Inventory.SetEquippedItem(startItem);
     }
+
+    
 
     public override void TakeDamage(SciptableAttackObj attack)
     {

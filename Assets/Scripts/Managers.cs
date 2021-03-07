@@ -7,12 +7,14 @@ using UnityEngine;
 [RequireComponent(typeof(EventManager))]
 [RequireComponent(typeof(LevelManager))]
 
+
 public class Managers : MonoBehaviour
 {
     public static PlayerManager Player { get; private set; }
     public static InventoryManager Inventory { get; private set; }
     public static EventManager Event { get; private set; }
     public static LevelManager Level { get; private set; }
+
 
 
     private List<IGameManager> _startSequence;
@@ -23,7 +25,6 @@ public class Managers : MonoBehaviour
         Inventory = GetComponent<InventoryManager>();
         Event = GetComponent<EventManager>();
         Level = GetComponent<LevelManager>();
-
 
         _startSequence = new List<IGameManager>();
         _startSequence.Add(Player);

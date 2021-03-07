@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
     public ItemObj equippedItem { get; private set; }
+    public ItemObj stashedEquippedItem { get; private set; }
     private GameObject instatiatedEquipment;
     public Transform itemHook { get; private set; }
 
@@ -16,6 +17,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
     {
         _items = new Dictionary<ItemObj, int>();
         itemHook = FindObjectOfType<PlayerInputManager>().equipPoint;
+        
         status = ManagerStatus.Started;
     }
 
@@ -72,14 +74,43 @@ public class InventoryManager : MonoBehaviour, IGameManager
         return false;
     }
 
+    public void SetEquippedItem(ItemObj name)
+    {
+        equippedItem = name;
+        instatiatedEquipment = name.Equip();
+    }
+
     public void UnEquip()
     {
         if (equippedItem != null)
         {
+            stashedEquippedItem = equippedItem;
             Destroy(instatiatedEquipment);
             instatiatedEquipment = null;
             equippedItem = null;
                        
+        }
+    }
+
+    public void ToogleHolster()
+    {
+        if(stashedEquippedItem == null)
+        {
+            UnEquip();
+        }
+        else
+        {
+            TakeOutStashedItem();
+        }
+    }
+
+    void TakeOutStashedItem()
+    {
+        if(stashedEquippedItem != null)
+        {
+            equippedItem = stashedEquippedItem;
+            instatiatedEquipment = stashedEquippedItem.Equip();
+            stashedEquippedItem = null;
         }
     }
 

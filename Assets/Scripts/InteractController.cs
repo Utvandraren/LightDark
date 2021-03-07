@@ -13,6 +13,7 @@ public class InteractController : MonoBehaviour
 
     InteractableObject currentobj;
     Camera camera;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,8 @@ public class InteractController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2"))
         {
+            if (Managers.Inventory.equippedItem != null)
+                return;
             if (Physics.SphereCast(rayOrigin, checkThickness, camera.transform.forward, out hit, maxRange, layerToUse))
             {
                 if (hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
