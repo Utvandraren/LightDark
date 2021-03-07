@@ -7,6 +7,8 @@ using UnityEngine.AI;
 public class serviceRobot : MonoBehaviour
 {
     [SerializeField] float alertArea = 10f;
+    [SerializeField] float turnedOffTimer = 20f;
+
     NavMeshAgent agent;
     Transform playerTransform;
     bool seesPlayer = false;
@@ -68,6 +70,28 @@ public class serviceRobot : MonoBehaviour
                 collider.GetComponent<AIController>().GoToTarget(transform);
         }
     }
+
+    public void TurnOff()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TemporaryTurnOffRobot());
+    }
+
+    IEnumerator TemporaryTurnOffRobot()
+    {
+        seesPlayer = false;
+        SensorToolkit.RangeSensor[] sensors = GetComponents<SensorToolkit.RangeSensor>();
+        for (int i = 0; i < sensors.Length; i++)
+        {
+            sensors[i].enabled = false;
+        }
+        yield return new WaitForSeconds(turnedOffTimer);
+        for (int i = 0; i < sensors.Length; i++)
+        {
+            sensors[i].enabled = true;
+        }
+    }
+
 
     void OnDrawGizmosSelected()
     {
