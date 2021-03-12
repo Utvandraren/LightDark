@@ -41,8 +41,6 @@ public class InteractController : MonoBehaviour
                     obj.Interact();
                 if (hit.transform.TryGetComponent<CollectibleItem>(out CollectibleItem item))
                     item.PickUp();
-                if (hit.transform.TryGetComponent<puzzle>(out puzzle puzzle))
-                    puzzle.StartPuzzle(gameObject);
             }
         }
 
