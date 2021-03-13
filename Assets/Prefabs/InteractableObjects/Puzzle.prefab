@@ -185,9 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nmbr: 1
-  onFitInPlace:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &1270218698
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -315,9 +312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nmbr: 2
-  onFitInPlace:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &411824643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -361,7 +355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5789529958587723136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.395912, y: 168.33308, z: 47.44316}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4130467021131952811}
@@ -385,6 +379,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraObj: {fileID: 2176634192416756137}
   interactCollider: {fileID: 585636283336076828}
+  onPuzzleSolve:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2901230065261919871
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -616,9 +613,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nmbr: 3
-  onFitInPlace:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &1351757860
 Rigidbody:
   m_ObjectHideFlags: 0

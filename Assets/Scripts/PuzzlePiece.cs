@@ -21,19 +21,24 @@ public class PuzzlePiece : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         particle = GetComponentInChildren<ParticleSystem>();
         particle.gameObject.SetActive(false);
-
     }
 
     void Update()
     {
         mouseDelta = Input.mousePosition - lastMousePos;
-        deltaForce = Vector3.Distance(lastMousePos, Input.mousePosition);
         lastMousePos = Input.mousePosition;
+
+
+
     }
 
-    void OnMouseDrag() //called continuously while the button is pressed down every frame
+
+    void OnMouseDrag() //called continuously while the button is pressed down every frame -----needs to fix the Algo to use all directions
     {
-        rb.AddForce(mouseDelta);
+        //Vector3 dir = Camera.main.ScreenToWorldPoint(mouseDelta);
+
+        rb.AddForce(mouseDelta * Time.deltaTime);
+
     }
 
     public void FitInPlace()

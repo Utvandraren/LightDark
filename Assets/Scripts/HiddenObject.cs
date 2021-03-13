@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class HiddenObject : MonoBehaviour
 {
+    [SerializeField] bool isRevealedPermanet = false;
     [SerializeField] float timeRevealed = 15f;
     [SerializeField] UnityEvent onReveal;
     [SerializeField] UnityEvent onHide;
@@ -13,7 +14,8 @@ public class HiddenObject : MonoBehaviour
     public void Reveal()
     {
         onReveal.Invoke();
-        StartCoroutine(Timer());
+        if (isRevealedPermanet)
+            StartCoroutine(Timer());
     }
 
     IEnumerator Timer()
