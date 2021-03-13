@@ -268,7 +268,9 @@ namespace ECM.Controllers
                     name));
             }
 
-            var cam = GetComponentInChildren<Camera>();
+            //var cam = GetComponentInChildren<Camera>();
+            var cam = GameObject.FindGameObjectWithTag("VirtualCamera");
+
             if (cam == null)
             {
                 Debug.LogError(

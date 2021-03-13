@@ -18,7 +18,7 @@ public class InteractController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        camera = GetComponentInChildren<Camera>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -41,6 +41,8 @@ public class InteractController : MonoBehaviour
                     obj.Interact();
                 if (hit.transform.TryGetComponent<CollectibleItem>(out CollectibleItem item))
                     item.PickUp();
+                if (hit.transform.TryGetComponent<PuzzleManager>(out PuzzleManager puzzle))
+                    puzzle.EnterPuzzle();
             }
         }
 

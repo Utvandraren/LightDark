@@ -9,6 +9,7 @@ TagManager:
   - Hidden
   - Terrain
   - Equippable
+  - VirtualCamera
   layers:
   - Default
   - TransparentFX
