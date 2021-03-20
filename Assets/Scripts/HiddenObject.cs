@@ -14,7 +14,7 @@ public class HiddenObject : MonoBehaviour
     public void Reveal()
     {
         onReveal.Invoke();
-        if (isRevealedPermanet)
+        if (!isRevealedPermanet)
             StartCoroutine(Timer());
     }
 

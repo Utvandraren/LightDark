@@ -4940,7 +4940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce80b91368f80184d95bf36725d3bb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRevealedPermanet: 0
+  isRevealedPermanet: 1
   timeRevealed: 15
   onReveal:
     m_PersistentCalls:
@@ -5116,7 +5116,7 @@ PrefabInstance:
     - target: {fileID: 3430142051713801941, guid: c85122df876c12740b54fbd5b3250a77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.27
+      value: -1.113
       objectReference: {fileID: 0}
     - target: {fileID: 3430142051713801941, guid: c85122df876c12740b54fbd5b3250a77,
         type: 3}
