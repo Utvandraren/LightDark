@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Bunker.unity
-    guid: 33f0fa4baaefca6439bcde2dd002d352
+    path: Assets/Scenes/Boot.unity
+    guid: 067a1074109825f4d858172e816d95c1
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3b17c2060808b6c48b3ac970cc3eacda
   - enabled: 1
     path: Assets/Scenes/Dark.unity
     guid: 8f9a320595abd554d8abe88d619bb64b
+  - enabled: 1
+    path: Assets/Scenes/Bunker.unity
+    guid: 33f0fa4baaefca6439bcde2dd002d352
+  - enabled: 1
+    path: Assets/Scenes/Corridor.unity
+    guid: fdcc4bdf90f2cce45b3215665956865d
   m_configObjects: {}

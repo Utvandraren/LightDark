@@ -7,11 +7,10 @@ using UnityEngine;
 public class InteractOutline : MonoBehaviour
 {
     GameObject outlineObj;
-    [SerializeField] GameObject textPrompt;
-    Material outlineMaterial;
+    //[SerializeField] GameObject textPrompt;
     [SerializeField] float timerOutline = 1f;
+    [SerializeField] Material outlineMaterial;
 
-    GameObject InstantOutline;
 
     float coolDown = 0f;
 
@@ -19,8 +18,8 @@ public class InteractOutline : MonoBehaviour
     {
         outlineObj = Instantiate(new GameObject(), transform);
         outlineObj.transform.localScale *= 1.1f;
-        if (textPrompt != null)
-            Instantiate(textPrompt, outlineObj.transform);
+       // if (textPrompt != null)
+       //     Instantiate(textPrompt, outlineObj.transform);
         outlineObj.AddComponent<MeshFilter>();
         outlineObj.AddComponent<MeshRenderer>();
         TryGetComponent<MeshFilter>(out MeshFilter outMesh);
@@ -29,7 +28,8 @@ public class InteractOutline : MonoBehaviour
         {
             outlineObj.GetComponent<MeshFilter>().mesh = outMesh.mesh;
             //outlineObj.GetComponent<MeshRenderer>().material = outlineMaterial;
-            outlineObj.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/OutlineMaterial");
+            outlineObj.GetComponent<MeshRenderer>().material = outlineMaterial;
+                //Resources.Load<Material>("Materials/OutlineMaterial");
             outlineObj.SetActive(false);
         }
 
@@ -60,7 +60,7 @@ public class InteractOutline : MonoBehaviour
             coolDown = timerOutline;
             return;
         }
-
+        //Debug.Log("Otline activated");
         outlineObj.SetActive(true);
         coolDown = timerOutline;
         //StartCoroutine(TimerContext());
