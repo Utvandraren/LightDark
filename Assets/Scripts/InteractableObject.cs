@@ -18,14 +18,16 @@ public class InteractableObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        onShowContext.AddListener(GetComponent<InteractOutline>().ToogleOutline);
+        //onShowContext = new UnityEvent();
+        
+        //onShowContext.AddListener(GetComponent<InteractOutline>().ToogleOutline);
     }
 
     public void ShowContext()
     {
 
-        onShowContext.Invoke();
-
+        //onShowContext.Invoke();
+        GetComponent<InteractOutline>().ToogleOutline();
     }
 
     public void Interact()
@@ -37,7 +39,7 @@ public class InteractableObject : MonoBehaviour
 
     void OnDestroy()
     {
-        onShowContext.RemoveAllListeners();
+        //onShowContext.RemoveAllListeners();
         onInteract.RemoveAllListeners();
     }
 

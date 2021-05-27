@@ -10,15 +10,19 @@ public class InteractController : MonoBehaviour
     [SerializeField] float itemInfoRange = 4f;
     [SerializeField] Transform movePoint;
     [SerializeField] float throwingForce = 60f;
+    [SerializeField] AudioClip pickupSoundClip;
 
     InteractableObject currentobj;
     Camera camera;
-   
+    AudioSource source;
+
 
     // Start is called before the first frame update
     void Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        source = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -40,7 +44,10 @@ public class InteractController : MonoBehaviour
                 if (hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
                     obj.Interact();
                 if (hit.transform.TryGetComponent<CollectibleItem>(out CollectibleItem item))
+                {
                     item.PickUp();
+                    source.PlayOneShot(pickupSoundClip);
+                }
                 if (hit.transform.TryGetComponent<PuzzleManager>(out PuzzleManager puzzle))
                     puzzle.EnterPuzzle();
             }

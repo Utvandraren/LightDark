@@ -7,16 +7,12 @@ public class LevelManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
 
-   
-
-    //public GameObject[] systemPrefabs;
-
     [SerializeField] private string loadingScene;
     //[SerializeField] private UIManager uiManager;
 
     private string currentLevel;
     private string previousLevel;
-    private string nextLevel;
+    //private string nextLevel;
     private List<AsyncOperation> loadOperations;
     private List<GameObject> instancedSystemPrefabs;
 
@@ -29,64 +25,42 @@ public class LevelManager : MonoBehaviour, IGameManager
     {
         DontDestroyOnLoad(gameObject);
         loadOperations = new List<AsyncOperation>();
-        //instancedSystemPrefabs = new List<GameObject>();
-
-        //InstantiateSystemPrefabs();
-
         LoadScene("MainMenu");
         
     }
-
-    //void InstantiateSystemPrefabs()
-    //{
-    //    GameObject prefabInstance;
-    //    for (int i = 0; i < systemPrefabs.Length; i++)
-    //    {
-    //        prefabInstance = Instantiate(systemPrefabs[i]);
-    //        instancedSystemPrefabs.Add(prefabInstance);
-    //    }
-    //}
 
     void OnLoadOperationComplete(AsyncOperation ao)
     {
         if (loadOperations.Contains(ao))
         {
             loadOperations.Remove(ao);
-            if (currentLevel == loadingScene)
-            {
-                UnloadScene(previousLevel);
-            }
-            else if (currentLevel != loadingScene && SceneManager.GetSceneByName(loadingScene).isLoaded)
-            {
-                UnloadScene(loadingScene);
-            }
+            //if (currentLevel == loadingScene)
+            //{
+            //    UnloadScene(previousLevel);
+            //}
+            //else if (currentLevel != loadingScene && SceneManager.GetSceneByName(loadingScene).isLoaded)
+            //{
+            //    UnloadScene(loadingScene);
+            //}
             //transition between scenes here
         }
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentLevel)); //Required for SceneManager.GetActiveScene to work properly
 
-        //try
-        //{
-        //    uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
-        //}
-        //catch
-        //{
-        //    Debug.Log("GameManager.cs could not find the UIManager. Was this intentional?");
-        //}
-
+       
         Debug.Log("Load complete");
-       // Cursor.visible = false;
-       // Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void OnUnloadOperationComplete(AsyncOperation ao)
     {
         Debug.Log("Unload complete");
 
-        if (currentLevel == loadingScene)
-        {
-            LoadScene(nextLevel);
-        }
+        //if (currentLevel == loadingScene)
+        //{
+        //    LoadScene(nextLevel);
+        //}
     }
 
     /// <summary>
@@ -95,8 +69,6 @@ public class LevelManager : MonoBehaviour, IGameManager
     /// <param name="sceneName"></param>
     public void LoadScene(string sceneName)
     {
-
-        previousLevel = currentLevel;
         AsyncOperation ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         if (ao == null)
@@ -107,7 +79,7 @@ public class LevelManager : MonoBehaviour, IGameManager
 
         ao.completed += OnLoadOperationComplete;
         loadOperations.Add(ao);
-        currentLevel = sceneName; //Loaded new scene, so set the current level to the current one now.
+        currentLevel = sceneName; 
     }
 
     /// <summary>
@@ -127,26 +99,22 @@ public class LevelManager : MonoBehaviour, IGameManager
         ao.completed += OnUnloadOperationComplete;
     }
 
-    public void GoToNextLevel(string testScene)
+    public void GoToLevel(string sceneName)
     {
-        //ONLY FOR DEBUG IN EDITOR
-        if (SceneManager.GetSceneByBuildIndex((SceneManager.GetActiveScene().buildIndex + 1)).name == null)
-        {
-            nextLevel = testScene;
-            LoadScene(loadingScene);
-        }
-        else //This is for builds
-        {
-            nextLevel = SceneManager.GetSceneByBuildIndex((SceneManager.GetActiveScene().buildIndex + 1)).name;
-            LoadScene(loadingScene);
-        }
+        previousLevel = currentLevel;
+        currentLevel = sceneName;
+        UnloadScene(previousLevel);
+
+        LoadScene(sceneName);
+        Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     public void RestartLevel()
     {
-        nextLevel = SceneManager.GetActiveScene().name;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().ResetStats();
-        LoadScene(loadingScene);
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().ResetStats();
+        GoToLevel("MainMenu");
     }
 
     public void GameOver()
@@ -156,14 +124,19 @@ public class LevelManager : MonoBehaviour, IGameManager
 
     public void ReturnToMain()
     {
-        nextLevel = "MainMenu";
-        LoadScene(loadingScene);
+        LoadScene("MainMenu");
     }
 
     public void Win()
     {
         //Load timelineendingscene and credit
+        LoadScene("Win");
         Debug.Log("Game won!!!");
+    }
+
+    public void Lose()
+    {
+
     }
 
     //protected override void OnDestroy()

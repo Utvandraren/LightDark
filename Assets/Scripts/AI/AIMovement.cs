@@ -12,7 +12,7 @@ public class AIMovement : MonoBehaviour
     NavMeshAgent navAgent;
     Animator animator;
     float walkSpeed;
-    bool seekTarget = false;
+    [SerializeField] bool seekTarget = false;
     int index;
    
 

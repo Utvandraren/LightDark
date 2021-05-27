@@ -9,46 +9,15 @@ public class EnemyStats : Stats
 
     [SerializeField] private GameObject deathEffect;
 
-    [SerializeField] private bool isWeakToTesla;
-    [SerializeField] private bool isWeakToLaser;
-    [SerializeField] private bool isWeakToExplosive;
-    [SerializeField] private float weaknessDmgMultiplier;
-
     protected override void Start()
     {
         base.Start();
     }
 
-    public override void TakeDamage(SciptableAttackObj attack)
+    public override void TakeDamage(int damage)
     {
-        switch (attack.element)
-        {
-            case SciptableAttackObj.WeaponElement.Laser:
-                if (isWeakToLaser)
-                {
-                    health -= (int)(attack.damage * weaknessDmgMultiplier);
-                }
-                else health -= attack.damage;
-                break;
-            case SciptableAttackObj.WeaponElement.Explosive:
-                if (isWeakToExplosive)
-                {
-                    health -= (int)(attack.damage * weaknessDmgMultiplier);
-                }
-                else health -= attack.damage;
-                break;
-            case SciptableAttackObj.WeaponElement.Electricity:
-                if (isWeakToTesla)
-                {
-                    health -= (int)(attack.damage * weaknessDmgMultiplier);
-                }
-                else health -= attack.damage;
-                break;
-            default:
-                health -= attack.damage;
-                break;
-        }
-
+        health -= damage;
+            
         if (health <= 0f)
         {
             Die();

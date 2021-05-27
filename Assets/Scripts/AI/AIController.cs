@@ -6,7 +6,11 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-    Transform playerTransform;
+    [SerializeField] AudioClip walkSoundClip;
+    public float attackRange = 2f;
+
+    [HideInInspector] public Transform playerTransform;
+    AudioSource source;
 
     public float walkSpeed;
     public float runSpeed;
@@ -56,6 +60,7 @@ public class AIController : MonoBehaviour
         patrol = new PatrolState(stateMachine, this);
         goTo = new GoToState(stateMachine, this);
         stateMachine.Initialize(idle);
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -65,6 +70,14 @@ public class AIController : MonoBehaviour
         if(navAgent.isPathStale)
         {
             stateMachine.ChangeState(idle);
+        }
+
+        if (Vector3.Distance(transform.position, playerTransform.position) < attackRange)
+        {
+            //Managers.Level.Lose();
+            Debug.Log("PLAYER KILLED");
+            //playerTransform.GetComponent<PlayerStats>().TakeDamage(1000);
+            FindObjectOfType<UIController>().ShowLoseUI();
         }
     }
 
@@ -109,6 +122,18 @@ public class AIController : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         
+    }
+
+    public void PlayStepSound()
+    {
+        source.PlayOneShot(walkSoundClip, Random.Range(0.98f, 1.02f));
+        
+        Debug.Log("Sound played");
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
 }

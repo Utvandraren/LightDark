@@ -8,15 +8,21 @@ public class serviceRobot : MonoBehaviour
 {
     [SerializeField] float alertArea = 10f;
     [SerializeField] float turnedOffTimer = 20f;
+    [SerializeField] AudioClip alertSoundClip;
+    [SerializeField] AudioClip loseSightPlayerSoundClip;
+
 
     NavMeshAgent agent;
     Transform playerTransform;
     bool seesPlayer = false;
+    bool isAlerted = false;
+    AudioSource source;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         Idle();
@@ -29,7 +35,7 @@ public class serviceRobot : MonoBehaviour
     }
 
     public void SeePlayer()
-    {
+    {      
         agent.destination = playerTransform.position;
         seesPlayer = true;
         agent.isStopped = false;
@@ -38,6 +44,7 @@ public class serviceRobot : MonoBehaviour
 
     public void LoseSightOfPlayer()
     {
+        source.PlayOneShot(loseSightPlayerSoundClip);
         seesPlayer = false;
         agent.isStopped = true;
     }
@@ -62,17 +69,23 @@ public class serviceRobot : MonoBehaviour
 
     public void AlertNearbyEnemies()
     {
-        //source.Play();
+        if (isAlerted)
+            return;
+
+        isAlerted = true;
+        source.PlayOneShot(alertSoundClip);
         Collider[] collisions = Physics.OverlapSphere(transform.position, alertArea);
         foreach (Collider collider in collisions)
         {
             if (collider.CompareTag("Enemy"))
                 collider.GetComponent<AIController>().GoToTarget(transform);
         }
+        TurnOff();
     }
 
     public void TurnOff()
     {
+       
         StopAllCoroutines();
         StartCoroutine(TemporaryTurnOffRobot());
     }
@@ -90,6 +103,7 @@ public class serviceRobot : MonoBehaviour
         {
             sensors[i].enabled = true;
         }
+        isAlerted = false;
     }
 
 

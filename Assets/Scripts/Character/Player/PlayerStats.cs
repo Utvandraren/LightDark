@@ -12,14 +12,14 @@ public class PlayerStats : Stats
     {
         base.Start();
         OnHealthChanged(startingHealth);
-        Managers.Inventory.SetEquippedItem(startItem);
+        //Managers.Inventory.SetEquippedItem(startItem);
     }
 
     
 
-    public override void TakeDamage(SciptableAttackObj attack)
+    public override void TakeDamage(int damage)
     {
-        base.TakeDamage(attack);
+        base.TakeDamage(damage);
         OnHealthChanged(health);
     }
 

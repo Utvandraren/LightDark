@@ -181,9 +181,10 @@ AudioSource:
   m_GameObject: {fileID: 2150486872943553611}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1790567920152539440, guid: c0cdf7cdf3a68464fb13375f32c9a282,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -296,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightObj: {fileID: 2151591199269925410}
+  pickupSoundClip: {fileID: 0}
   equipPoint: {fileID: 2151591198966169875}
 --- !u!114 &2151591198309531137
 MonoBehaviour:
@@ -317,6 +319,7 @@ MonoBehaviour:
   itemInfoRange: 4
   movePoint: {fileID: 2151591199444918634}
   throwingForce: 30
+  pickupSoundClip: {fileID: 0}
 --- !u!114 &2120283406238989523
 MonoBehaviour:
   m_ObjectHideFlags: 0

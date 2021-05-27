@@ -487,7 +487,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 25, y: 0.102000006, z: 25}
+  m_Extents: {x: 35, y: 0.102000006, z: 35}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -584,9 +584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1310882924bc9149a7be174b5421cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrompt: {fileID: 2061006738305349426, guid: 7659a71ad373178489e3334e87d9ae60,
-    type: 3}
   timerOutline: 1
+  outlineMaterial: {fileID: 0}
 --- !u!1001 &9004497004880875105
 PrefabInstance:
   m_ObjectHideFlags: 0

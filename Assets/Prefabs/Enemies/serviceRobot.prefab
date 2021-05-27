@@ -47,7 +47,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -976,7 +976,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 25
+        scalar: 4
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1027,8 +1027,8 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
       cycleCount: 1
-      repeatInterval: 0.01
-      probability: 1
+      repeatInterval: 0.1
+      probability: 0.3
   SizeModule:
     enabled: 1
     curve:
@@ -10431,6 +10431,7 @@ GameObject:
   - component: {fileID: 1323850252}
   - component: {fileID: 1323850255}
   - component: {fileID: 1323850256}
+  - component: {fileID: 300138006}
   m_Layer: 11
   m_Name: serviceRobot
   m_TagString: Enemy
@@ -10527,7 +10528,7 @@ MonoBehaviour:
   RequiresLineOfSight: 1
   BlocksLineOfSight:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3072
   TestLOSTargetsOnly: 0
   NumberOfRays: 1
   MinimumVisibility: 0.5
@@ -10553,8 +10554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IgnoreList:
   - {fileID: 7728093581106420444}
-  EnableTagFilter: 0
-  AllowedTags: []
+  EnableTagFilter: 1
+  AllowedTags:
+  - Player
   OnDetected:
     m_PersistentCalls:
       m_Calls:
@@ -10573,7 +10575,7 @@ MonoBehaviour:
   OnLostDetection:
     m_PersistentCalls:
       m_Calls: []
-  DetectionMode: 0
+  DetectionMode: 1
   RequiresLineOfSight: 1
   BlocksLineOfSight:
     serializedVersion: 2
@@ -10581,12 +10583,12 @@ MonoBehaviour:
   TestLOSTargetsOnly: 0
   NumberOfRays: 1
   MinimumVisibility: 0.5
-  SensorRange: 5
+  SensorRange: 6
   DetectsOnLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   SensorUpdateMode: 0
-  CheckInterval: 1
+  CheckInterval: 6
   InitialBufferSize: 20
   DynamicallyIncreaseBufferSize: 1
 --- !u!114 &7728093581106420441
@@ -10603,6 +10605,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alertArea: 40
   turnedOffTimer: 20
+  alertSoundClip: {fileID: 8300000, guid: 9d31efac32a60764f979b65db245a8fd, type: 3}
+  loseSightPlayerSoundClip: {fileID: 8300000, guid: 3482eda69f2de9e45bce4a7ac3e5fed6,
+    type: 3}
 --- !u!195 &7728093581106420446
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10691,8 +10696,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1310882924bc9149a7be174b5421cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPrompt: {fileID: 0}
   timerOutline: 1
+  outlineMaterial: {fileID: 2100000, guid: 366568d9ff730c54b9099c1aa3f6a0ba, type: 2}
+--- !u!82 &300138006
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728093581106420444}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 1790567920152539440, guid: c0cdf7cdf3a68464fb13375f32c9a282,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 8a2ce38e6f0bf9e4f82dcbe273ea4e7b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 140
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.097222224
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7814517723183715817
 GameObject:
   m_ObjectHideFlags: 0

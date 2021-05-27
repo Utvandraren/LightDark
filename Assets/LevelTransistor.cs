@@ -8,6 +8,11 @@ public class LevelTransistor : MonoBehaviour
 
     public void GoToLevel()
     {
-        Managers.Level.LoadScene(levelname);
+        Managers.Level.GoToLevel(levelname);
+    }
+
+    public void Win()
+    {
+        Managers.Level.Win();
     }
 }

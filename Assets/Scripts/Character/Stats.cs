@@ -14,9 +14,9 @@ public class Stats : MonoBehaviour
         health = startingHealth;
     }
 
-    public virtual void TakeDamage(SciptableAttackObj attack)  //Logic handling taking damage
+    public virtual void TakeDamage(int damage)  //Logic handling taking damage
     {
-        health -= attack.damage;
+        health -= damage;
         if (health <= 0)
         {
             Die();

@@ -26,6 +26,9 @@ public class PursuitState : State
     {
         controller.navAgent.destination = controller.startTarget.position;
 
+        
+            
+
         if (!controller.canSeePlayer)
             stateMachine.ChangeState(controller.idle);
     }
