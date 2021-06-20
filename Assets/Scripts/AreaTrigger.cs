@@ -8,15 +8,26 @@ public class AreaTrigger : MonoBehaviour
     [SerializeField] UnityEvent onEnter;
     [SerializeField] UnityEvent onExit;
 
+    GameObject lastObjectHit;
 
     void OnTriggerEnter(Collider other)
     {
+        lastObjectHit = other.gameObject;
         onEnter.Invoke();
     }
 
     void OnTriggerExit(Collider other)
     {
         onExit.Invoke();
+    }
+
+    public void KillObject()
+    {
+        if (lastObjectHit != null)
+        {
+            if (lastObjectHit.TryGetComponent(out PlayerStats player))
+                player.TakeDamage(99999);
+        }
     }
 
 }

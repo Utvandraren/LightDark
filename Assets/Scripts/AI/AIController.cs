@@ -67,10 +67,11 @@ public class AIController : MonoBehaviour
     {
         stateMachine.currentState.Update();
 
-        if(navAgent.isPathStale)
-        {
+        if(navAgent.isPathStale)        
             stateMachine.ChangeState(idle);
-        }
+
+        if (canSeePlayer)
+            stateMachine.ChangeState(pursuit);
 
         if (Vector3.Distance(transform.position, playerTransform.position) < attackRange)
         {
@@ -78,7 +79,7 @@ public class AIController : MonoBehaviour
             Debug.Log("PLAYER KILLED");
             //playerTransform.GetComponent<PlayerStats>().TakeDamage(1000);
             FindObjectOfType<UIController>().ShowLoseUI();
-        }
+        }       
     }
 
     public void NoticePlayer()
@@ -94,6 +95,7 @@ public class AIController : MonoBehaviour
     public void GoToTarget(Transform target)
     {
         startTarget = target;
+        canSeePlayer = false;
         stateMachine.ChangeState(goTo);
     }
     public void GoToPlayerLatestPosition()

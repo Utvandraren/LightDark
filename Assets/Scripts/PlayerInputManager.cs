@@ -30,6 +30,9 @@ public class PlayerInputManager : MonoBehaviour
 
         if (Input.GetButtonDown("Holster"))
             Managers.Inventory.ToogleHolster();
+
+        if (Input.GetButtonDown("Menu"))
+            Application.Quit();
        
 
     } 

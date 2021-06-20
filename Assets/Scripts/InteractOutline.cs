@@ -23,7 +23,11 @@ public class InteractOutline : MonoBehaviour
         outlineObj.AddComponent<MeshFilter>();
         outlineObj.AddComponent<MeshRenderer>();
         TryGetComponent<MeshFilter>(out MeshFilter outMesh);
-        outlineObj.GetComponent<MeshFilter>().mesh = GetComponent<MeshFilter>().mesh;
+        MeshFilter comp;
+
+        if (TryGetComponent<MeshFilter>(out comp))
+            outlineObj.GetComponent<MeshFilter>().mesh = comp.mesh;
+
         if (outMesh != null)
         {
             outlineObj.GetComponent<MeshFilter>().mesh = outMesh.mesh;

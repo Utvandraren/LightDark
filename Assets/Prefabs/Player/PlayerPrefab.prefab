@@ -297,7 +297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightObj: {fileID: 2151591199269925410}
-  pickupSoundClip: {fileID: 0}
   equipPoint: {fileID: 2151591198966169875}
 --- !u!114 &2151591198309531137
 MonoBehaviour:
@@ -319,7 +318,7 @@ MonoBehaviour:
   itemInfoRange: 4
   movePoint: {fileID: 2151591199444918634}
   throwingForce: 30
-  pickupSoundClip: {fileID: 0}
+  pickupSoundClip: {fileID: 8300000, guid: ca3cb1c4fcfffc9429e69cad55001aa7, type: 3}
 --- !u!114 &2120283406238989523
 MonoBehaviour:
   m_ObjectHideFlags: 0

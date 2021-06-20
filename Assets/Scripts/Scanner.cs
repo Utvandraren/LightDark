@@ -6,15 +6,18 @@ public class Scanner : MonoBehaviour
 {
     [SerializeField] GameObject scannerPrefab;
     [SerializeField] float detectedAreaRange = 20f;
+    [SerializeField] protected float timeBetweenAttacks = 2f;
 
     List<GameObject> hiddenObjsNearby;
     Animator animator;
     Light lightComponent;
     float lightStartIntensity;
+    protected float currentTime;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentTime = timeBetweenAttacks;
         hiddenObjsNearby = new List<GameObject>();
         animator = GetComponent<Animator>();
         lightComponent = GetComponentInChildren<Light>();
@@ -25,11 +28,17 @@ public class Scanner : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
-        {
-            GameObject obj = Instantiate(scannerPrefab, transform.position, transform.rotation);
-            //obj.GetComponent<Projectile>().SetDirection();
+        {         
+            if (currentTime <= 0f)
+            {
+                GameObject obj = Instantiate(scannerPrefab, transform.position, transform.rotation);
+                currentTime = timeBetweenAttacks;
+            }
         }
         UpdateAnimationSpeed();
+        currentTime -= Time.deltaTime;
+        Mathf.Clamp(currentTime, 0f, timeBetweenAttacks);
+
     }
 
     void UpdateAnimationSpeed()
