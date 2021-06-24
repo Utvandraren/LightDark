@@ -1186,7 +1186,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 81032ae8f6acfe043b204daf21beba68, type: 3}
+  - {fileID: 2100000, guid: 723ac70745466b44386c03833ab9abdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerOutline: 1
-  outlineMaterial: {fileID: 0}
+  outlineMaterial: {fileID: 2100000, guid: 673f7a671fc9fa34e99c6ed637abc972, type: 2}
 --- !u!114 &2550100621572566127
 MonoBehaviour:
   m_ObjectHideFlags: 0

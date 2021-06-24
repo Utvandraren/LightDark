@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 1115915947}
   - component: {fileID: 1115915948}
   - component: {fileID: 1115915953}
+  - component: {fileID: 1744831443}
   m_Layer: 11
   m_Name: BigKey
   m_TagString: Untagged
@@ -353,7 +354,7 @@ MeshCollider:
   m_GameObject: {fileID: 8806286723375896624}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -371,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerOutline: 1
-  outlineMaterial: {fileID: 2100000, guid: 366568d9ff730c54b9099c1aa3f6a0ba, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 673f7a671fc9fa34e99c6ed637abc972, type: 2}
 --- !u!114 &1115915953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,3 +390,16 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1744831443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8806286723375896624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1070344, y: 0.39795837, z: 0.48737383}
+  m_Center: {x: 1.0361661, y: 0.026765477, z: 0.09924266}

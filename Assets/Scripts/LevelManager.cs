@@ -70,6 +70,7 @@ public class LevelManager : MonoBehaviour, IGameManager
     public void LoadScene(string sceneName)
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        currentLevel = sceneName;
 
         if (ao == null)
         {
@@ -79,7 +80,6 @@ public class LevelManager : MonoBehaviour, IGameManager
 
         ao.completed += OnLoadOperationComplete;
         loadOperations.Add(ao);
-        currentLevel = sceneName; 
     }
 
     /// <summary>
@@ -102,13 +102,10 @@ public class LevelManager : MonoBehaviour, IGameManager
     public void GoToLevel(string sceneName)
     {
         previousLevel = currentLevel;
-        currentLevel = sceneName;
         UnloadScene(previousLevel);
-
         LoadScene(sceneName);
-        Cursor.visible = false;
-       // Cursor.lockState = CursorLockMode.Locked;
 
+        Cursor.visible = false;
     }
 
     public void RestartLevel()
@@ -117,14 +114,14 @@ public class LevelManager : MonoBehaviour, IGameManager
         GoToLevel("MainMenu");
     }
 
-    public void GameOver()
-    {
-        //uiManager.SetLoseUI();
-    }
+    //public void GameOver()
+    //{
+    //    //uiManager.SetLoseUI();
+    //}
 
     public void ReturnToMain()
     {
-        LoadScene("MainMenu");
+        GoToLevel("MainMenu");
     }
 
     public void Win()

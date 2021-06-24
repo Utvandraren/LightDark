@@ -34,7 +34,10 @@ public class InteractableObject : MonoBehaviour
     {
         if (requireKey && Managers.Inventory.ContainsItem(requiredKeyItem) == false)
             return;
+
         onInteract.Invoke();
+        if (requireKey)
+            Managers.Inventory.ConsumeItem(requiredKeyItem);
     }
 
     void OnDestroy()

@@ -78,7 +78,8 @@ public class serviceRobot : MonoBehaviour
         foreach (Collider collider in collisions)
         {
             if (collider.CompareTag("Enemy"))
-                collider.GetComponent<AIController>().GoToPlayerLatestPosition();
+                if (collider.gameObject.TryGetComponent(out AIController AI))
+                    AI.GoToPlayerLatestPosition();
         }
         TurnOff();
     }

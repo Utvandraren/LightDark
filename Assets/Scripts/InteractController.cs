@@ -87,6 +87,8 @@ public class InteractController : MonoBehaviour
 
     void DropObj()
     {
+        if (currentobj == null)
+            return;
         currentobj.GetComponent<Rigidbody>().isKinematic = false;
         movePoint.DetachChildren();
         currentobj = null;
@@ -94,6 +96,9 @@ public class InteractController : MonoBehaviour
     
     void ThrowObj()
     {
+        if (currentobj == null)
+            return;
+
         currentobj.GetComponent<Rigidbody>().isKinematic = false;
         movePoint.DetachChildren();
         currentobj.GetComponent<Rigidbody>().AddForce(movePoint.forward * throwingForce, ForceMode.Impulse);

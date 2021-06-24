@@ -15,8 +15,10 @@ GameObject:
   - component: {fileID: 2515524460620806121}
   - component: {fileID: 2515524460620806118}
   - component: {fileID: 2515524460620806119}
-  - component: {fileID: 5805011449409455303}
-  m_Layer: 0
+  - component: {fileID: 1456741921}
+  - component: {fileID: 1456741922}
+  - component: {fileID: 6676408111586934662}
+  m_Layer: 11
   m_Name: LightSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +276,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5805011449409455303
+--- !u!114 &1456741921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,10 +285,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 2515524460620806124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d6917c2422d464c8f3480ad1862106, type: 3}
+  m_Script: {fileID: 11500000, guid: eaf91fabf05407b448505708a30a8248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  requireKey: 0
+  requiredKeyItem: {fileID: 0}
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1456741922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515524460620806124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1310882924bc9149a7be174b5421cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerOutline: 1
+  outlineMaterial: {fileID: 2100000, guid: 366568d9ff730c54b9099c1aa3f6a0ba, type: 2}
+--- !u!114 &6676408111586934662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515524460620806124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775ac1061f10abb4991a8ae429382194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityTreshold: 3
+  alertArea: 12
 --- !u!1 &2515524461198293233
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +332,7 @@ GameObject:
   - component: {fileID: 2515524461198293198}
   - component: {fileID: 2515524461198293196}
   - component: {fileID: 2515524461198293199}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 10
+  m_Version: 11
   m_ObsoleteShadowResolutionTier: 1
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512

@@ -15,7 +15,8 @@ public class ExitUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Submit"))
         {
-            Managers.Level.GoToLevel("MainMenu");
+            //Managers.Level.GoToLevel("MainMenu");
+            Application.Quit();
         }
     }
 }

@@ -11,7 +11,8 @@ public class InventoryManager : MonoBehaviour, IGameManager
     public Transform itemHook { get; private set; }
 
     private Dictionary<ItemObj, int> _items;
-    
+
+    [SerializeField] private List<ItemObj> items;
 
     public void Startup()
     {
@@ -38,6 +39,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
         if(_items.ContainsKey(name))
         {
             _items[name] += 1;
+
         }
         else
         {

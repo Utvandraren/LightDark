@@ -14,5 +14,6 @@ public class LevelTransistor : MonoBehaviour
     public void Win()
     {
         Managers.Level.Win();
+        //Managers.Level.LoadScene("Win");
     }
 }
