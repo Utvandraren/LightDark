@@ -34,7 +34,7 @@ public class InteractController : MonoBehaviour
 
     void CheckForInteractableObjects()
     {
-        RaycastHit hit;        
+        RaycastHit hit;
         Vector3 rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
         if (Input.GetButtonDown("Fire1"))
@@ -65,7 +65,7 @@ public class InteractController : MonoBehaviour
                 }
             }
         }
-   
+
         if (Input.GetButtonUp("Fire2"))
         {
             DropObj();
@@ -76,7 +76,7 @@ public class InteractController : MonoBehaviour
             ThrowObj();
         }
     }
-    
+
     void PickUpObj(InteractableObject obj)
     {
         obj.transform.position = movePoint.position;
@@ -93,7 +93,7 @@ public class InteractController : MonoBehaviour
         movePoint.DetachChildren();
         currentobj = null;
     }
-    
+
     void ThrowObj()
     {
         if (currentobj == null)
@@ -107,14 +107,23 @@ public class InteractController : MonoBehaviour
     }
     void ShowNearbyitemsInfo()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, itemInfoRange, layerToUse);
+        //Collider[] colliders = Physics.OverlapSphere(transform.position, itemInfoRange, layerToUse);
 
-        for (int i = 0; i < colliders.Length; i++)
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+        //    if (colliders[i].transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
+        //        obj.ShowContext();
+
+        //    //colliders[i].transform.GetComponent<InteractableObject>().ShowContext();
+        //}
+
+        RaycastHit hit;
+        Vector3 rayOrigin = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+
+        if (Physics.SphereCast(rayOrigin, checkThickness, camera.transform.forward, out hit, maxRange, layerToUse))
         {
-            if (colliders[i].transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
+            if (hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
                 obj.ShowContext();
-
-            //colliders[i].transform.GetComponent<InteractableObject>().ShowContext();
         }
     }
 
