@@ -25,7 +25,8 @@ public class LevelManager : MonoBehaviour, IGameManager
     {
         DontDestroyOnLoad(gameObject);
         loadOperations = new List<AsyncOperation>();
-        LoadScene("MainMenu");
+        if (!Application.isEditor)
+            LoadScene("MainMenu");
         
     }
 
