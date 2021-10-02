@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GeneralStates:
     LoadedProjectGUID:
-      valueInternal: 90d6a69a2f54f8042af3a40d3695f888
+      valueInternal: 
     RecentlyOpenedProjectPath:
-      valueInternal: Assets\Animations\Umotion
+      valueInternal: Assets\Animations\DraggingCannon
     RecentlyOpenedProjectGUIDsList:
+    - valueInternal: eebaf8fa0d4dd024885059b3a60b98c5
     - valueInternal: 90d6a69a2f54f8042af3a40d3695f888
