@@ -25,9 +25,24 @@ public class LevelManager : MonoBehaviour, IGameManager
     {
         DontDestroyOnLoad(gameObject);
         loadOperations = new List<AsyncOperation>();
-        if (!Application.isEditor)
+        AddScene("UI");
+        if (SceneManager.sceneCount <= 2)
+            LoadScene("MainMenu");
+        else if (!Application.isEditor)
             LoadScene("MainMenu");
         
+
+    }
+
+    void AddScene(string sceneName)
+    {
+        AsyncOperation ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+
+        if (ao == null)
+        {
+            Debug.LogError("GameManager was unable to load the scene: " + sceneName);
+            return;
+        }
     }
 
     void OnLoadOperationComplete(AsyncOperation ao)

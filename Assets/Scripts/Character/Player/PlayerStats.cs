@@ -11,7 +11,7 @@ public class PlayerStats : Stats
     protected override void Start()
     {
         base.Start();
-        OnHealthChanged(startingHealth);
+        //OnHealthChanged(startingHealth);
         //Managers.Inventory.SetEquippedItem(startItem);
     }
 
@@ -20,7 +20,7 @@ public class PlayerStats : Stats
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        OnHealthChanged(health);
+        //OnHealthChanged(health);
     }
 
     public void RestoreHealth(int amount)

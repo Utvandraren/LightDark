@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6917c2422d464c8f3480ad1862106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: d3f23af8e1189c741b8c5641a031de81, type: 2}
+  item: {fileID: 0}
 --- !u!64 &1115915947
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requireKey: 0
-  requiredKeyItem: {fileID: 0}
+  requiredKeyItem: {fileID: 11400000, guid: c19a9bacc9eab394db219a7706000351, type: 2}
   onInteract:
     m_PersistentCalls:
       m_Calls: []

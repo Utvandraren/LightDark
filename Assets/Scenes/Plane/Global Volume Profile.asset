@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f077503be6ae942a1e1245dbd53ea9, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
@@ -221,12 +221,12 @@ MonoBehaviour:
     max: 4
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0.661
+    m_Value: 0.73
     min: 0
     max: 1
   radius:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 3.45
     min: 0.25
     max: 5
   spatialBilateralAggressiveness:
