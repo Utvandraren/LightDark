@@ -29,7 +29,6 @@ public class TerrainObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            manager.terrainToDestroy = this;
         }
     }
 

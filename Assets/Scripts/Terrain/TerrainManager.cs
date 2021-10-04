@@ -5,11 +5,9 @@ using UnityEngine;
 public class TerrainManager : MonoBehaviour
 {
     [SerializeField] GameObject[] terrainObjects;
+    [SerializeField] bool DontSpawn = false;
     GameObject[,] instantiatedObjects;
-
-
     TerrainObject terrainInFocus;
-    public TerrainObject terrainToDestroy;
 
 
     void Start()
@@ -17,7 +15,8 @@ public class TerrainManager : MonoBehaviour
         instantiatedObjects = new GameObject[3, 3];
         terrainInFocus = FindObjectOfType<TerrainObject>();
 
-        CreateStartTerrain();
+        if (!DontSpawn)
+            CreateStartTerrain();
     }
 
     public void FocusNewObject(TerrainObject obj)
