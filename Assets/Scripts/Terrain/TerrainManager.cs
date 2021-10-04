@@ -24,6 +24,7 @@ public class TerrainManager : MonoBehaviour
     {
         //Debug.Log("New focus terrain");
         terrainInFocus = obj;
+
         CreateNewTerrain(terrainInFocus);
     }
 
@@ -38,6 +39,7 @@ public class TerrainManager : MonoBehaviour
             {
                 if (i == 0 && j == 0)
                 {
+                    instantiatedObjects[k, l] = terrainInFocus.gameObject;
                     l--;
                     continue;                
                 }
@@ -56,16 +58,16 @@ public class TerrainManager : MonoBehaviour
     public void CreateNewTerrain(TerrainObject startTerrain)
     {
 
-        if (startTerrain.gameObject == instantiatedObjects[0, 1]) //is up
+        if (startTerrain.gameObject == instantiatedObjects[0, 1] || startTerrain.gameObject == instantiatedObjects[0, 0] || startTerrain.gameObject == instantiatedObjects[0, 2]) //is up
         {
-            Vector3 newPosition = startTerrain.transform.position;
+            Vector3 newPosition = instantiatedObjects[0, 1].transform.position;
             newPosition += new Vector3(1000f, 0f, 0f);
             GameObject newTerrain = CreateTerrain(newPosition);
             GameObject newLeftTerrain = CreateTerrain(newPosition + new Vector3(0, 0f, 1000f));
             GameObject newRightTerrain = CreateTerrain(newPosition + new Vector3(0, 0f, -1000f));
 
             Destroy(instantiatedObjects[2, 0]);
-            Destroy(instantiatedObjects[2, 1]);
+            Destroy(instantiatedObjects[2, 1]);       //Fix these thayt doesnt seems to be working so they keep track of the right terrains
             Destroy(instantiatedObjects[2, 2]);
 
             for (int i = 2; i > 0; i--)
@@ -80,10 +82,13 @@ public class TerrainManager : MonoBehaviour
             instantiatedObjects[0, 1] = newTerrain;
             instantiatedObjects[0, 2] = newRightTerrain;
 
+            
+
+
         }
-        else if (startTerrain.gameObject == instantiatedObjects[2, 1]) //is down
+        else if (startTerrain.gameObject == instantiatedObjects[2, 1] || startTerrain.gameObject == instantiatedObjects[2, 0] || startTerrain.gameObject == instantiatedObjects[2, 2]) //is down
         {
-            Vector3 newPosition = startTerrain.transform.position;
+            Vector3 newPosition = instantiatedObjects[2, 1].transform.position;
             newPosition += new Vector3(-1000f, 0f, 0f);
             GameObject newTerrain = CreateTerrain(newPosition);
             GameObject newLeftTerrain = CreateTerrain(newPosition + new Vector3(0, 0f, 1000f));
@@ -102,26 +107,78 @@ public class TerrainManager : MonoBehaviour
                 }
             }
 
-            instantiatedObjects[0, 0] = newLeftTerrain;
-            instantiatedObjects[0, 1] = newTerrain;
-            instantiatedObjects[0, 2] = newRightTerrain;
+            instantiatedObjects[2, 0] = newLeftTerrain;
+            instantiatedObjects[2, 1] = newTerrain;
+            instantiatedObjects[2, 2] = newRightTerrain;
         }
-        else if (startTerrain.gameObject == instantiatedObjects[1, 2]) //is right
+        else if (startTerrain.gameObject == instantiatedObjects[1, 2] || startTerrain.gameObject == instantiatedObjects[0, 2] || startTerrain.gameObject == instantiatedObjects[2, 2]) //is right
         {
-            Vector3 newPosition = startTerrain.transform.position;
+            Vector3 newPosition = instantiatedObjects[1, 2].transform.position;
             newPosition += new Vector3(0f, 0f, -1000f);
             GameObject newTerrain = CreateTerrain(newPosition);
+            GameObject newLeftTerrain = CreateTerrain(newPosition + new Vector3(1000f, 0f, 0f));
+            GameObject newRightTerrain = CreateTerrain(newPosition + new Vector3(-1000f, 0f, -0f));
 
+
+            Destroy(instantiatedObjects[0, 0]);
+            Destroy(instantiatedObjects[1, 0]);
+            Destroy(instantiatedObjects[2, 0]);
+
+            //instantiatedObjects[0, 0] = instantiatedObjects[0, 1];
+            //instantiatedObjects[1, 0] = instantiatedObjects[1, 1];
+            //instantiatedObjects[2, 0] = instantiatedObjects[2, 1];
+
+            //instantiatedObjects[0, 1] = instantiatedObjects[0, 2];
+            //instantiatedObjects[1, 1] = instantiatedObjects[1, 2];
+            //instantiatedObjects[2, 1] = instantiatedObjects[2, 2];
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    instantiatedObjects[i, j] = instantiatedObjects[i, j + 1];
+                }
+            }
+
+            instantiatedObjects[0, 2] = newLeftTerrain;
             instantiatedObjects[1, 2] = newTerrain;
+            instantiatedObjects[2, 2] = newRightTerrain;
 
+            Debug.Log("Right side detected");
         }
-        else if (startTerrain.gameObject == instantiatedObjects[1, 0]) //is left
+        else if (startTerrain.gameObject == instantiatedObjects[1, 0] || startTerrain.gameObject == instantiatedObjects[0, 0] || startTerrain.gameObject == instantiatedObjects[2, 0]) //is left
         {
-            Vector3 newPosition = startTerrain.transform.position;
+            Vector3 newPosition = instantiatedObjects[1, 0].transform.position;
             newPosition += new Vector3(0f, 0f, 1000f);
             GameObject newTerrain = CreateTerrain(newPosition);
+            GameObject newLeftTerrain = CreateTerrain(newPosition + new Vector3(1000f, 0f, 0f));
+            GameObject newRightTerrain = CreateTerrain(newPosition + new Vector3(-1000f, 0f, -0f));
 
+
+            Destroy(instantiatedObjects[0, 2]);
+            Destroy(instantiatedObjects[1, 2]);
+            Destroy(instantiatedObjects[2, 2]);
+
+            //instantiatedObjects[0, 2] = instantiatedObjects[0, 1];
+            //instantiatedObjects[1, 2] = instantiatedObjects[1, 1]; //not done
+            //instantiatedObjects[2, 2] = instantiatedObjects[2, 1];
+
+            //instantiatedObjects[0, 1] = instantiatedObjects[0, 0];
+            //instantiatedObjects[1, 1] = instantiatedObjects[1, 0]; //not done
+            //instantiatedObjects[2, 1] = instantiatedObjects[2, 0];
+
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 2; j > 0; j--)
+                {
+                    instantiatedObjects[i, j] = instantiatedObjects[i, j - 1];
+                }
+            }
+
+            instantiatedObjects[0, 0] = newLeftTerrain;
             instantiatedObjects[1, 0] = newTerrain;
+            instantiatedObjects[2, 0] = newRightTerrain;
 
         }
     }
