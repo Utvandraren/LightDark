@@ -12,7 +12,8 @@ public class PlayerStats : Stats
     {
         base.Start();
         //OnHealthChanged(startingHealth);
-        //Managers.Inventory.SetEquippedItem(startItem);
+        Managers.Inventory.SetEquippedItem(startItem);
+        Managers.Player.SetPlayerObj(gameObject);
     }
 
     

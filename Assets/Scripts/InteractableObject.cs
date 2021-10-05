@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] bool requireKey;
+    [SerializeField] bool onlyInteractOnce = false;
+
     [SerializeField] ItemObj requiredKeyItem;
 
     UnityEvent onShowContext;
@@ -14,6 +16,7 @@ public class InteractableObject : MonoBehaviour
 
     InteractOutline outlineScript;
     bool isShowingOutline = true;
+    bool hasInteracted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,11 @@ public class InteractableObject : MonoBehaviour
         if (requireKey && Managers.Inventory.ContainsItem(requiredKeyItem) == false)
             return;
 
+        if (onlyInteractOnce && hasInteracted)
+            return;
+
         onInteract.Invoke();
+        hasInteracted = true;
         if (requireKey)
             Managers.Inventory.ConsumeItem(requiredKeyItem);
     }

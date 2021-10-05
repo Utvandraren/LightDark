@@ -14,7 +14,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerLayer
   - Water
   - UI
   - IgnoreColliding
@@ -23,7 +23,7 @@ TagManager:
   - weapon
   - Terrain
   - Interactable
-  - 
+  - Resources
   - 
   - 
   - 
