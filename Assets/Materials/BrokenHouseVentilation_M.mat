@@ -7,13 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RockBricks_M
+  m_Name: BrokenHouseVentilation_M
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _HEIGHTMAP _NORMALMAP _NORMALMAP_TANGENT_SPACE
+  m_ShaderKeywords: _DISABLE_DECALS _DISABLE_SSR _DISABLE_SSR_TRANSPARENT _HEIGHTMAP
+    _NORMALMAP _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2225
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses:
   - DistortionVectors
@@ -30,8 +31,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: 88bcbeab1c71dc14daaac31238875328, type: 3}
-        m_Scale: {x: 55, y: 55}
+        m_Texture: {fileID: 2800000, guid: 0ed7fa5fd4dca4e4a8f6d80880ef2ba0, type: 3}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
         m_Texture: {fileID: 0}
@@ -58,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
-        m_Texture: {fileID: 2800000, guid: 4e236338f22786f4dab7eea78f23fe1a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 467df4df757621c478edc862bba7f2da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _IridescenceMaskMap:
@@ -70,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 88bcbeab1c71dc14daaac31238875328, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0ed7fa5fd4dca4e4a8f6d80880ef2ba0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -78,7 +79,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 88aec49b411ec2e49878f7bcd2640f45, type: 3}
+        m_Texture: {fileID: 2800000, guid: e3fdac2a78180ba49bab083c93b241cc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -176,23 +177,23 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
-    - _HeightAmplitude: 0.02
+    - _HeightAmplitude: 0
     - _HeightCenter: 0.5
-    - _HeightMapParametrization: 0
-    - _HeightMax: 1
-    - _HeightMin: -1
+    - _HeightMapParametrization: 1
+    - _HeightMax: 46.43
+    - _HeightMin: -3.58
     - _HeightOffset: 0
     - _HeightPoMAmplitude: 2
-    - _HeightTessAmplitude: 2
+    - _HeightTessAmplitude: 0
     - _HeightTessCenter: 0.5
-    - _InvTilingScale: 0.018181818
+    - _InvTilingScale: 0.2
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
-    - _Metallic: 0
-    - _MetallicRemapMax: 1
+    - _Metallic: 0.61
+    - _MetallicRemapMax: 0
     - _MetallicRemapMin: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
@@ -203,10 +204,11 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _RayTracing: 0
-    - _ReceivesSSR: 1
+    - _ReceivesSSR: 0
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _Smoothness: 0.5
+    - _SSRefractionProjectionModel: 0
+    - _Smoothness: 0.771
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -214,17 +216,17 @@ Material:
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
     - _SubsurfaceMask: 1
-    - _SupportDecals: 1
+    - _SupportDecals: 0
     - _SurfaceType: 0
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
@@ -248,9 +250,9 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.20754716, g: 0.20754716, b: 0.20754716, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -265,7 +267,7 @@ Material:
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &482860327810745453
+--- !u!114 &2433925711716524300
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
