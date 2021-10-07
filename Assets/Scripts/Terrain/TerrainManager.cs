@@ -16,7 +16,8 @@ public class TerrainManager : MonoBehaviour
         terrainInFocus = FindObjectOfType<TerrainObject>();
 
         if (!DontSpawn)
-            CreateStartTerrain();
+            Invoke("CreateStartTerrain", 0.1f);
+            //CreateStartTerrain();
     }
 
     public void FocusNewObject(TerrainObject obj)
@@ -52,6 +53,8 @@ public class TerrainManager : MonoBehaviour
             l = 2;
             k--;
         }
+        //instantiatedObjects[1,1].GetComponent<TerrainObject>().surface.BuildNavMesh();
+
     }
 
     public void CreateNewTerrain(TerrainObject startTerrain)

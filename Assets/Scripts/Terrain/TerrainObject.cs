@@ -10,13 +10,10 @@ public class TerrainObject : MonoBehaviour
     [HideInInspector] public Terrain terrainData;
     bool isProcessed = false;
     TerrainManager manager;
-    NavMeshSurface surface;
     
     void Start()
     {
         terrainData = GetComponent<Terrain>();
-        surface = GetComponent<NavMeshSurface>();
-        surface.BuildNavMesh();
     }
 
     void OnTriggerEnter(Collider other)

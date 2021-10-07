@@ -6063,6 +6063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainData: {fileID: 0}
+  surface: {fileID: 0}
 --- !u!114 &4133927734812632403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6091,7 +6092,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 4e11debfb59440049a0fad20957bbc93, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &457737175885399897
 PrefabInstance:
