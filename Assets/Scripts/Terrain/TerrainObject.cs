@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(BoxCollider), typeof(NavMeshSurface))]
 public class TerrainObject : MonoBehaviour
 {
     [HideInInspector] public Terrain terrainData;
     bool isProcessed = false;
     TerrainManager manager;
-
+    NavMeshSurface surface;
+    
     void Start()
     {
         terrainData = GetComponent<Terrain>();
+        surface = GetComponent<NavMeshSurface>();
+        surface.BuildNavMesh();
     }
 
     void OnTriggerEnter(Collider other)
