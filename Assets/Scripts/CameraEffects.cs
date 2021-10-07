@@ -16,4 +16,6 @@ public class CameraEffects : MonoBehaviour
         source.GenerateImpulse();
         Debug.Log("Pulse generated");
     }
+
+
 }

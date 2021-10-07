@@ -12,8 +12,11 @@ public class AreaTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        lastObjectHit = other.gameObject;
-        onEnter.Invoke();
+        if(other.CompareTag("Player"))
+        {
+            lastObjectHit = other.gameObject;
+            onEnter.Invoke();
+        }
     }
 
     void OnTriggerExit(Collider other)

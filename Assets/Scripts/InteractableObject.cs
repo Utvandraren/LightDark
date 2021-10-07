@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(InteractOutline))]
+//[RequireComponent(typeof(InteractOutline))]
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] bool requireKey;
@@ -28,9 +28,12 @@ public class InteractableObject : MonoBehaviour
 
     public void ShowContext()
     {
+        if (hasInteracted)
+            return;
 
-        //onShowContext.Invoke();
-        GetComponent<InteractOutline>().ToogleOutline();
+        if (TryGetComponent<InteractOutline>(out InteractOutline outLine))
+            outLine.ToogleOutline();
+        GetComponentInChildren<InteractOutline>().ToogleOutline();
     }
 
     public void Interact()

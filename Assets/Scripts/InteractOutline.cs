@@ -9,7 +9,7 @@ public class InteractOutline : MonoBehaviour
     GameObject outlineObj;
     //[SerializeField] GameObject textPrompt;
     [SerializeField] float timerOutline = 1f;
-    [SerializeField] Material outlineMaterial;
+    //[SerializeField] Material outlineMaterial;
 
 
     float coolDown = 0f;
@@ -32,9 +32,19 @@ public class InteractOutline : MonoBehaviour
         {
             outlineObj.GetComponent<MeshFilter>().mesh = outMesh.mesh;
             //outlineObj.GetComponent<MeshRenderer>().material = outlineMaterial;
-            outlineObj.GetComponent<MeshRenderer>().material = outlineMaterial;
-                //Resources.Load<Material>("Materials/OutlineMaterial");
+            outlineObj.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/OutlineMaterial");
+
             outlineObj.SetActive(false);
+        }
+        else
+        {
+            outMesh = GetComponentInChildren<MeshFilter>();
+            outlineObj.GetComponent<MeshFilter>().mesh = outMesh.mesh;
+            //outlineObj.GetComponent<MeshRenderer>().material = outlineMaterial;
+            outlineObj.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Materials/OutlineMaterial");
+
+            outlineObj.SetActive(false);
+
         }
 
     }

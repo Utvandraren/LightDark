@@ -2355,10 +2355,10 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 3.05
+  - time: 2
     functionName: PlaySoundClip
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 73eec9b78e604ca41acc2f695d1b1b71,
+    objectReferenceParameter: {fileID: 8300000, guid: f6639e8c202341943bb36c4d6d315f53,
       type: 3}
     floatParameter: 0
     intParameter: 0
@@ -2366,7 +2366,7 @@ AnimationClip:
   - time: 6
     functionName: PlaySoundClip
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: 73eec9b78e604ca41acc2f695d1b1b71,
+    objectReferenceParameter: {fileID: 8300000, guid: 587fd641672d8ae49bf1bf61883cc0f6,
       type: 3}
     floatParameter: 0
     intParameter: 0
