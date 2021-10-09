@@ -5,6 +5,9 @@ using UnityEngine;
 public class TerrainManager : MonoBehaviour
 {
     [SerializeField] GameObject[] terrainObjects;
+    [SerializeField] GameObject[] objToPlace;
+    [SerializeField] int objPerTerrain = 5;
+
     [SerializeField] bool DontSpawn = false;
     GameObject[,] instantiatedObjects;
     TerrainObject terrainInFocus;
@@ -40,6 +43,7 @@ public class TerrainManager : MonoBehaviour
                 if (i == 0 && j == 0)
                 {
                     instantiatedObjects[k, l] = terrainInFocus.gameObject;
+                    PlaceObjects(instantiatedObjects[k, l].GetComponent<Terrain>());
                     l--;
                     continue;                
                 }
@@ -47,6 +51,7 @@ public class TerrainManager : MonoBehaviour
                 GameObject objToInst = terrainObjects[Random.Range(0, terrainObjects.Length)];
                 instantiatedObjects[k, l] = Instantiate(objToInst, pos, Quaternion.identity, transform);
                 instantiatedObjects[k, l].GetComponent<TerrainObject>().SetManager(this);
+                PlaceObjects(instantiatedObjects[k, l].GetComponent<Terrain>());
 
                 l--;
             }
@@ -188,59 +193,32 @@ public class TerrainManager : MonoBehaviour
     GameObject CreateTerrain(Vector3 pos)
     {
         GameObject objToInst = terrainObjects[Random.Range(0, terrainObjects.Length)];
-
         GameObject obj = Instantiate(objToInst, pos, Quaternion.identity, transform);
         obj.GetComponent<TerrainObject>().SetManager(this);
+        PlaceObjects(obj.GetComponent<Terrain>());
         return obj;
     }
 
+    void PlaceObjects(Terrain terrain)
+    {
+        for (int i = 0; i < objPerTerrain; i++)
+        {
+            //Randomize pos on current terrain
+            float x = Random.Range(0f, 1000f);
+            float y = 200f;
+            float z = Random.Range(0f, 1000f);
+            Vector3 objPos = terrain.GetPosition() + new Vector3(x, y, z);
 
+            //Raycast down to get point where ground is
+            RaycastHit hit;
+            if (Physics.SphereCast(objPos, 50f, Vector3.down, out hit))
+            {
+                objPos = hit.point;
+                Quaternion rotation = Random.rotation;
+                Instantiate(objToPlace[Random.Range(0, objToPlace.Length)], objPos, rotation, terrain.transform);
+            }
 
+        }
 
-    //public void CreateNewTerrain(TerrainObject startTerrain)
-    //{
-    //    Debug.Log("new terrain being created");
-
-    //    if (startTerrain == terrainInFocus.terrainData.topNeighbor) //is up
-    //    {            
-    //        TerrainObject newTopTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newTopLeftTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newTopRightTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-
-    //        startTerrain.terrainData.topNeighbor.SetNeighbors(startTerrain.terrainData.leftNeighbor, newTopTerrain.terrainData, startTerrain.terrainData.rightNeighbor, startTerrain.terrainData.bottomNeighbor);
-
-    //        newTopTerrain.terrainData.SetNeighbors(newTopLeftTerrain.terrainData, null , newTopRightTerrain.terrainData, startTerrain.terrainData);
-    //    }
-    //    else if (startTerrain == terrainInFocus.terrainData.bottomNeighbor) //is down
-    //    {
-    //        TerrainObject newBottomTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newBottomLeftTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newBottomRightTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-
-    //        startTerrain.terrainData.bottomNeighbor.SetNeighbors(startTerrain.terrainData.leftNeighbor, startTerrain.terrainData.topNeighbor, startTerrain.terrainData.rightNeighbor, newBottomTerrain.terrainData);
-
-    //        newBottomTerrain.terrainData.SetNeighbors(newBottomLeftTerrain.terrainData, startTerrain.terrainData, newBottomRightTerrain.terrainData, null);
-    //    }
-    //    else if (startTerrain == terrainInFocus.terrainData.rightNeighbor) //is right
-    //    {
-    //        TerrainObject newRightTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newRightTopTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newRightBottomTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-
-    //        startTerrain.terrainData.rightNeighbor.SetNeighbors(startTerrain.terrainData.leftNeighbor, startTerrain.terrainData.topNeighbor, newRightTerrain.terrainData, startTerrain.terrainData.bottomNeighbor);
-
-    //        newRightTerrain.terrainData.SetNeighbors(startTerrain.terrainData, newRightTopTerrain.terrainData, null, newRightBottomTerrain.terrainData);
-    //    }
-    //    else if (startTerrain == terrainInFocus.terrainData.leftNeighbor) //is left
-    //    {
-    //        TerrainObject newLeftTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newLeftTopTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-    //        TerrainObject newLeftBottomTerrain = Instantiate(terrainObjects[0], transform).GetComponent<TerrainObject>();
-
-    //        startTerrain.terrainData.rightNeighbor.SetNeighbors(newLeftTerrain.terrainData, startTerrain.terrainData.topNeighbor, startTerrain.terrainData.rightNeighbor, startTerrain.terrainData.bottomNeighbor);
-
-    //        newLeftTerrain.terrainData.SetNeighbors(null, newLeftTerrain.terrainData, startTerrain.terrainData, newLeftBottomTerrain.terrainData);
-
-    //    }
-    //}
+    }
 }
