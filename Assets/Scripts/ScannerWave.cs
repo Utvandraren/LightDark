@@ -11,7 +11,7 @@ public class ScannerWave : MonoBehaviour
         if (other.CompareTag(tagToUse))
         {
             other.GetComponent<HiddenObject>().Reveal();
-            Debug.Log("Object found!!!!!!!!");
+            //Debug.Log("Object found!!!!!!!!");
         }
     }
 

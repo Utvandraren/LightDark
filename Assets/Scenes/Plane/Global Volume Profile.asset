@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6994530021811076331
+--- !u!114 &-4176052751323463831
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953beb541740ddc499d005ee80c9ff29, type: 3}
   m_Name: Fog
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 0
@@ -21,7 +21,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   colorMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   color:
     m_OverrideState: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     showEyeDropper: 1
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 5000
+    m_Value: 4973.43
     min: 0
   mipFogMaxMip:
     m_OverrideState: 0
@@ -54,17 +54,17 @@ MonoBehaviour:
     min: 0
   baseHeight:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -148
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 1706.8
+    m_Value: 1740
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 400
+    m_Value: 146
     min: 1
   enableVolumetricFog:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   albedo:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -134,18 +134,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f077503be6ae942a1e1245dbd53ea9, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 23.63
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.038
+    m_Value: 1
     min: 0
     max: 1
   scatter:
@@ -193,7 +193,7 @@ MonoBehaviour:
   components:
   - {fileID: 8940026963300342540}
   - {fileID: -3799037587455385307}
-  - {fileID: -6994530021811076331}
+  - {fileID: -4176052751323463831}
 --- !u!114 &8940026963300342540
 MonoBehaviour:
   m_ObjectHideFlags: 3
