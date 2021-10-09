@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScannerWave : MonoBehaviour
 {
     [SerializeField] string tagToUse;
+    
 
     void OnTriggerEnter(Collider other)
     {

@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Revealer : MonoBehaviour
 {
+    [SerializeField] private float timeBetweenAttacks = 2f;
+    [SerializeField] private AudioClip alarmSoundClip;
+    [SerializeField] private TextMeshPro textIndicator;
 
-    [SerializeField] protected float timeBetweenAttacks = 2f;
-
-    Animator animator;
     AudioSource source;
+    Animator animator;
     protected float currentTime;
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         source = GetComponent<AudioSource>();
+        //textIndicator = GetComponentInChildren<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -38,4 +41,21 @@ public class Revealer : MonoBehaviour
         Mathf.Clamp(currentTime, 0f, timeBetweenAttacks);
 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Hidden"))
+        {
+            //source.PlayOneShot(alarmSoundClip);
+            HiddenObject objFound = other.GetComponent<HiddenObject>();
+            UpdateText(objFound.scannerInfo);
+        }
+
+    }
+
+    void UpdateText(string newText)
+    {
+        textIndicator.SetText(newText);
+    }
+
 }
