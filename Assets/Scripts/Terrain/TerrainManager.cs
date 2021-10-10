@@ -5,32 +5,27 @@ using UnityEngine;
 public class TerrainManager : MonoBehaviour
 {
     [SerializeField] GameObject[] terrainObjects;
-    [SerializeField] GameObject[] objToPlace;
+    [SerializeField] GameObject[] rnadomObjectsToPlace;
+    [SerializeField] GameObject[] stationaryObjectsToPlace;
+
     [Header("Objects")]
     [SerializeField] int objPerTerrain = 5;
+    [SerializeField] int stationaryObjPerTerrain = 5;
 
-    [Header("Day")]
-    [SerializeField] float dayCycleVelocity = 1f;
+
     [SerializeField] bool DontSpawn = false;
-    Light sunSource;
     GameObject[,] instantiatedObjects;
     TerrainObject terrainInFocus;
 
 
     void Start()
     {
-        sunSource = GetComponentInChildren<Light>();
         instantiatedObjects = new GameObject[3, 3];
         terrainInFocus = FindObjectOfType<TerrainObject>();
 
         if (!DontSpawn)
             Invoke("CreateStartTerrain", 0.1f);
             //CreateStartTerrain();
-    }
-
-    void Update()
-    {
-        PassDayCycle();
     }
 
     public void FocusNewObject(TerrainObject obj)
@@ -54,6 +49,8 @@ public class TerrainManager : MonoBehaviour
                 {
                     instantiatedObjects[k, l] = terrainInFocus.gameObject;
                     PlaceObjects(instantiatedObjects[k, l].GetComponent<Terrain>());
+                    PlaceStationaryObjects(instantiatedObjects[k, l].GetComponent<Terrain>());
+
                     l--;
                     continue;                
                 }
@@ -62,6 +59,7 @@ public class TerrainManager : MonoBehaviour
                 instantiatedObjects[k, l] = Instantiate(objToInst, pos, Quaternion.identity, transform);
                 instantiatedObjects[k, l].GetComponent<TerrainObject>().SetManager(this);
                 PlaceObjects(instantiatedObjects[k, l].GetComponent<Terrain>());
+                PlaceStationaryObjects(instantiatedObjects[k, l].GetComponent<Terrain>());
 
                 l--;
             }
@@ -221,19 +219,40 @@ public class TerrainManager : MonoBehaviour
 
             //Raycast down to get point where ground is
             RaycastHit hit;
-            if (Physics.SphereCast(objPos, 50f, Vector3.down, out hit))
+            if (Physics.SphereCast(objPos, 25f, Vector3.down, out hit))
             {
                 objPos = hit.point;
                 Quaternion rotation = Random.rotation;
-                Instantiate(objToPlace[Random.Range(0, objToPlace.Length)], objPos, rotation, terrain.transform);
+                Instantiate(rnadomObjectsToPlace[Random.Range(0, rnadomObjectsToPlace.Length)], objPos, rotation, terrain.transform);
             }
 
         }
 
     }
 
-    void PassDayCycle()
+    void PlaceStationaryObjects(Terrain terrain)
     {
-        sunSource.transform.Rotate(Vector3.right, dayCycleVelocity * Time.deltaTime);
+        for (int i = 0; i < stationaryObjPerTerrain; i++)
+        {
+            //Randomize pos on current terrain
+            float x = Random.Range(0f, 1000f);
+            float y = 200f;
+            float z = Random.Range(0f, 1000f);
+            Vector3 objPos = terrain.GetPosition() + new Vector3(x, y, z);
+
+            //Get size of object to place and check if current point is eligable
+            //do this later
+
+            //Raycast down to get point where ground is
+            RaycastHit hit;
+            if (Physics.SphereCast(objPos, 25f, Vector3.down, out hit))
+            {
+                objPos = hit.point;
+                Instantiate(rnadomObjectsToPlace[Random.Range(0, rnadomObjectsToPlace.Length)], objPos, Quaternion.identity, terrain.transform);
+            }
+
+        }
+
     }
+
 }

@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment : MonoBehaviour
+public class LightEquipment : MonoBehaviour
 {
-    [SerializeField] GameObject GuardianLight;
-
     // Start is called before the first frame update
     void Start()
     {

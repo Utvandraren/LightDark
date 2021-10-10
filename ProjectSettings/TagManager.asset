@@ -10,6 +10,7 @@ TagManager:
   - Terrain
   - Equippable
   - VirtualCamera
+  - LightSource
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Terrain
   - Interactable
   - Resources
-  - WeaponCamera
+  - 
   - 
   - 
   - 

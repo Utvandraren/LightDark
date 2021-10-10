@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private TMP_Text healthText;
+    [SerializeField] private TMP_Text energyText;
     [SerializeField] private InventoryPopup inventoryPopup;
     [SerializeField] GameObject loseUI;
     [SerializeField] AudioMixer mixer;
@@ -15,12 +16,14 @@ public class UIController : MonoBehaviour
     void OnEnable()
     {
         PlayerStats.OnHealthChanged += UpdateHealth;
+        PlayerStats.OnEnergyChanged += UpdateEnergy;
         PlayerInputManager.OnOpenInventory += OnOpenSettings;
     }
 
     void Start()
     {
         inventoryPopup.gameObject.SetActive(!inventoryPopup.gameObject.activeSelf);
+        //UpdateHealth(100);
     }
 
     public void OnOpenSettings()
@@ -33,6 +36,11 @@ public class UIController : MonoBehaviour
     public void UpdateHealth(int health)
     {
         healthText.text = health.ToString();
+    }
+
+    public void UpdateEnergy(int energy)
+    {
+        energyText.text = energy.ToString();
     }
 
     void OnDestroy()

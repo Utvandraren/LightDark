@@ -8,7 +8,7 @@ public class AIMovement : MonoBehaviour
 {
     [SerializeField] float runSpeed = 0f;
     public Transform[] waypoints;
-    Transform startTarget;
+    Transform player;
     NavMeshAgent navAgent;
     Animator animator;
     float walkSpeed;
@@ -19,9 +19,10 @@ public class AIMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         navAgent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        TryGetComponent(out animator);
+        //animator = GetComponent<Animator>();
         walkSpeed = navAgent.speed;
     }
 
@@ -29,7 +30,7 @@ public class AIMovement : MonoBehaviour
     void Update()
     {
         if (seekTarget)
-            MoveTowardsTarget(startTarget);
+            MoveTowardsTarget(player.position);
     }
 
     public void StartSeekingTarget()
@@ -37,7 +38,8 @@ public class AIMovement : MonoBehaviour
         navAgent.isStopped = false;
         navAgent.speed = runSpeed;
         seekTarget = true;
-        animator.SetBool("seePlayer", true);
+        if (animator)
+            animator.SetBool("seePlayer", true);
     }
 
     public void StopMovingToTarget()
@@ -45,17 +47,42 @@ public class AIMovement : MonoBehaviour
         navAgent.isStopped = true;
         navAgent.speed = walkSpeed;
         seekTarget = false;
-        animator.SetBool("seePlayer", false);
+        if (animator)
+            animator.SetBool("seePlayer", false);
     }
 
-    void MoveTowardsTarget(Transform target)
+    public void MoveTowardsTarget(Vector3 target)
     {
-        navAgent.destination = target.position;        
+        navAgent.SetDestination(target);
+
+    }
+
+    public void MoveAwayFromTarget()
+    {
+        //StopMovingToTarget();
+        navAgent.speed = runSpeed;
+        seekTarget = false;
+        
+        Vector3 newPos = Random.insideUnitCircle * 100f;
+        //navAgent.destination = -target.position;
+        navAgent.SetDestination(newPos);
+        StartCoroutine("MoveAwayCooldown");
+    }
+
+    
+
+    IEnumerator MoveAwayCooldown()
+    {
+        yield return new WaitForSeconds(3f);
+        navAgent.isStopped = false;
+        navAgent.speed = walkSpeed;
+        MoveTowardsTarget(player.position);
+
     }
 
     public void ChangeTarget(Transform newTarget)
     {
-        startTarget = newTarget;
+        player = newTarget;
     }
 
     public void StartWander()
