@@ -195,7 +195,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 1
   m_AreaLightShape: 0
-  m_Intensity: 3183.0989
+  m_Intensity: 79.57747
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -760,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3352670697919948160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: -0.132}
+  m_LocalPosition: {x: 0, y: -0, z: 0.291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2857418863039723248}
@@ -1452,6 +1452,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0eacb32875bdf2c4ca4ad2f227a58bdb, type: 2}
+    - target: {fileID: -7664728788398519507, guid: 7a896c60b42be444d99bec64a07908e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0eacb32875bdf2c4ca4ad2f227a58bdb, type: 2}
     - target: {fileID: -7640558969779515294, guid: 7a896c60b42be444d99bec64a07908e1,
         type: 3}
       propertyPath: m_Layer
@@ -1537,6 +1542,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 817665c695d5f514088996235ffb5aeb, type: 2}
+    - target: {fileID: 6745302439343835087, guid: 7a896c60b42be444d99bec64a07908e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb212e8b4c63c7b4ab92af953a32a605, type: 2}
+    - target: {fileID: 6804515234790598917, guid: 7a896c60b42be444d99bec64a07908e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 817665c695d5f514088996235ffb5aeb, type: 2}
     - target: {fileID: 7071182760956848314, guid: 7a896c60b42be444d99bec64a07908e1,
         type: 3}
       propertyPath: m_CastShadows
@@ -1547,6 +1562,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0eacb32875bdf2c4ca4ad2f227a58bdb, type: 2}
+    - target: {fileID: 7071182760956848314, guid: 7a896c60b42be444d99bec64a07908e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2779f2427bf4ecf468dd0df2c6f10641, type: 2}
     - target: {fileID: 7398295211003777424, guid: 7a896c60b42be444d99bec64a07908e1,
         type: 3}
       propertyPath: m_Layer
@@ -1562,6 +1582,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8567717000986892130, guid: 7a896c60b42be444d99bec64a07908e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 817665c695d5f514088996235ffb5aeb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a896c60b42be444d99bec64a07908e1, type: 3}
 --- !u!4 &7845398520407435995 stripped

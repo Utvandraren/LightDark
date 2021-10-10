@@ -6,21 +6,31 @@ public class TerrainManager : MonoBehaviour
 {
     [SerializeField] GameObject[] terrainObjects;
     [SerializeField] GameObject[] objToPlace;
+    [Header("Objects")]
     [SerializeField] int objPerTerrain = 5;
 
+    [Header("Day")]
+    [SerializeField] float dayCycleVelocity = 1f;
     [SerializeField] bool DontSpawn = false;
+    Light sunSource;
     GameObject[,] instantiatedObjects;
     TerrainObject terrainInFocus;
 
 
     void Start()
     {
+        sunSource = GetComponentInChildren<Light>();
         instantiatedObjects = new GameObject[3, 3];
         terrainInFocus = FindObjectOfType<TerrainObject>();
 
         if (!DontSpawn)
             Invoke("CreateStartTerrain", 0.1f);
             //CreateStartTerrain();
+    }
+
+    void Update()
+    {
+        PassDayCycle();
     }
 
     public void FocusNewObject(TerrainObject obj)
@@ -220,5 +230,10 @@ public class TerrainManager : MonoBehaviour
 
         }
 
+    }
+
+    void PassDayCycle()
+    {
+        sunSource.transform.Rotate(Vector3.right, dayCycleVelocity * Time.deltaTime);
     }
 }
