@@ -1715,6 +1715,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2790392218967248688, guid: 94d67ba283967074f9b6924797068cbd,
+        type: 3}
+      propertyPath: layersToUse.m_Bits
+      value: 1040
+      objectReference: {fileID: 0}
     - target: {fileID: 2790392218967248690, guid: 94d67ba283967074f9b6924797068cbd,
         type: 3}
       propertyPath: m_LocalRotation.w

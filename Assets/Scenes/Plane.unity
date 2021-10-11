@@ -350,6 +350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LegCreature
       objectReference: {fileID: 0}
+    - target: {fileID: 4989013493576763603, guid: 5e7f611fedda0064e8a1ca097511f2ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4989013493576763605, guid: 5e7f611fedda0064e8a1ca097511f2ce,
         type: 3}
       propertyPath: runSpeed
@@ -715,13 +720,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267390881}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.37469766, y: 0.5996679, z: 0.5996681, w: 0.3746977}
   m_LocalPosition: {x: 446.5, y: 117.31, z: 523.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1144290229}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 206.002, y: -90, z: -90}
 --- !u!114 &267390884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6837,6 +6842,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayCycleVelocity: 1
+  enemyToSpawn: {fileID: 4989013493576763603, guid: 5e7f611fedda0064e8a1ca097511f2ce,
+    type: 3}
+  maxAmountEnemies: 2
+  enemiesWaitTimeSpawnWindow: 10
   isNight: 0
 --- !u!1 &1214883712
 GameObject:
