@@ -68,14 +68,14 @@ MonoBehaviour:
     m_Value: 1000
     min: 0
   baseHeight:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: -322.1
   maximumHeight:
     m_OverrideState: 1
     m_Value: 880.48
   meanFreePath:
-    m_OverrideState: 1
-    m_Value: 16.3
+    m_OverrideState: 0
+    m_Value: 51.5
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
@@ -169,7 +169,7 @@ MonoBehaviour:
     max: 1
   radius:
     m_OverrideState: 1
-    m_Value: 3.45
+    m_Value: 1.33
     min: 0.25
     max: 5
   spatialBilateralAggressiveness:

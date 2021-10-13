@@ -120,6 +120,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
     {
         if (_items.ContainsKey(name))
         {
+            name.Use();
             _items[name]--;
             if (_items[name] == 0)
             {

@@ -11,7 +11,7 @@ public class Resource : MonoBehaviour
     private ParticleSystem ps;
     List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
     CapsuleCollider playerCollider;
-
+    PlayerStats playerStats;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +19,7 @@ public class Resource : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         source = GetComponent<AudioSource>();
         playerCollider = Managers.Player.playerObj.GetComponentInParent<CapsuleCollider>();
+        playerStats = Managers.Player.playerObj.GetComponentInParent<PlayerStats>();
         ps.trigger.SetCollider(0, playerCollider);
     }
 
@@ -37,6 +38,6 @@ public class Resource : MonoBehaviour
     {
         source.pitch = Random.Range(0.99f, 1.01f);
         source.PlayOneShot(collectSoundClip, Random.Range(0.99f, 1.01f));
-        Managers.Player.energy += amountToIncrease;
+        playerStats.energy += amountToIncrease;
     }
 }

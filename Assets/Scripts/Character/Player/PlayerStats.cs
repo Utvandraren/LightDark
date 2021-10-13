@@ -10,16 +10,13 @@ public class PlayerStats : Stats
 
     [SerializeField] ItemObj startItem;
     [SerializeField] int startEnergy;
-    int _energy;
-
-
-
+    [HideInInspector] public int energy;
 
     protected override void Start()
     {
         base.Start();
-        _energy = startEnergy;
-        //OnHealthChanged(startingHealth);
+        Invoke("ResetStats", 0.5f);
+            //OnHealthChanged(startingHealth);
         //OnEnergyChanged(startEnergy);
         Managers.Inventory.SetEquippedItem(startItem);
         Managers.Player.SetPlayerObj(gameObject);
@@ -35,13 +32,14 @@ public class PlayerStats : Stats
     {
         health += amount;
         health = Mathf.Min(health, startingHealth);
+        OnHealthChanged(health);
     }
 
     public void ConsumeEnergy(int energyUsed)
     {
-        _energy -= energyUsed;
-        _energy = Mathf.Max(_energy, 0);
-        OnEnergyChanged(_energy);
+        energy -= energyUsed;
+        energy = Mathf.Max(energy, 0);
+        OnEnergyChanged(energy);
     }
 
     public override void Die()
@@ -53,6 +51,9 @@ public class PlayerStats : Stats
     public void ResetStats()
     {
         health = startingHealth;
-        GetComponent<WeaponManager>().ResetAllAmmo();
+        energy = startEnergy;
+        OnHealthChanged(health); //To update the data in UI
+        OnEnergyChanged(energy);
+
     }
 }

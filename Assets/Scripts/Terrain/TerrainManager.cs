@@ -5,7 +5,7 @@ using UnityEngine;
 public class TerrainManager : MonoBehaviour
 {
     [SerializeField] GameObject[] terrainObjects;
-    [SerializeField] GameObject[] rnadomObjectsToPlace;
+    [SerializeField] GameObject[] randomObjectsToPlace;
     [SerializeField] GameObject[] stationaryObjectsToPlace;
 
     [Header("Objects")]
@@ -223,7 +223,7 @@ public class TerrainManager : MonoBehaviour
             {
                 objPos = hit.point;
                 Quaternion rotation = Random.rotation;
-                Instantiate(rnadomObjectsToPlace[Random.Range(0, rnadomObjectsToPlace.Length)], objPos, rotation, terrain.transform);
+                Instantiate(randomObjectsToPlace[Random.Range(0, randomObjectsToPlace.Length)], objPos, rotation, terrain.transform);
             }
 
         }
@@ -248,7 +248,7 @@ public class TerrainManager : MonoBehaviour
             if (Physics.SphereCast(objPos, 25f, Vector3.down, out hit))
             {
                 objPos = hit.point;
-                Instantiate(rnadomObjectsToPlace[Random.Range(0, rnadomObjectsToPlace.Length)], objPos, Quaternion.identity, terrain.transform);
+                Instantiate(randomObjectsToPlace[Random.Range(0, randomObjectsToPlace.Length)], objPos, Quaternion.identity, terrain.transform);
             }
 
         }

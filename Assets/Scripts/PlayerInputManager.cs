@@ -11,6 +11,12 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] GameObject lightObj;
     public Transform equipPoint;
 
+    Equipment equipment;
+
+    void Start()
+    {
+        equipment = GetComponent<Equipment>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,7 +32,7 @@ public class PlayerInputManager : MonoBehaviour
             obj.enabled = !obj.enabled;           
         }
         if (Input.GetButtonDown("Light"))
-            lightObj.SetActive(!lightObj.activeSelf);
+            equipment.ToogleLight();
 
         if (Input.GetButtonDown("Holster"))
             Managers.Inventory.ToogleHolster();

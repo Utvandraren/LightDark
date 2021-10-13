@@ -93,10 +93,10 @@ public class InventoryPopup : MonoBehaviour
     public void OnUse()
     {
         Managers.Inventory.ConsumeItem(_curItem);
-        if (_curItem.itemName == "health")
-        {
-            Managers.Player.ChangeHealth(25);
-        }
+        //if (_curItem.itemName == "health")
+        //{
+        //    Managers.Player.ChangeHealth(25);
+        //}
         Refresh();
     }
 }
