@@ -11,6 +11,7 @@ public class InteractController : MonoBehaviour
     [SerializeField] Transform movePoint;
     [SerializeField] float throwingForce = 60f;
     [SerializeField] AudioClip pickupSoundClip;
+    [SerializeField] GameObject outlineCustomPass;
 
     InteractableObject currentobj;
     Camera camera;
@@ -122,8 +123,13 @@ public class InteractController : MonoBehaviour
 
         if (Physics.SphereCast(rayOrigin, checkThickness, camera.transform.forward, out hit, maxRange, layerToUse))
         {
+            outlineCustomPass.SetActive(true);
             if (hit.transform.TryGetComponent<InteractableObject>(out InteractableObject obj))
                 obj.ShowContext();
+        }
+        else
+        {
+            outlineCustomPass.SetActive(false);
         }
     }
 

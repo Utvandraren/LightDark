@@ -14,7 +14,6 @@ public class InteractableObject : MonoBehaviour
     UnityEvent onShowContext;
     [SerializeField] UnityEvent onInteract;
 
-    InteractOutline outlineScript;
     bool isShowingOutline = true;
     bool hasInteracted = false;
 
@@ -31,9 +30,6 @@ public class InteractableObject : MonoBehaviour
         if (hasInteracted)
             return;
 
-        if (TryGetComponent<InteractOutline>(out InteractOutline outLine))
-            outLine.ToogleOutline();
-        GetComponentInChildren<InteractOutline>().ToogleOutline();
     }
 
     public void Interact()
