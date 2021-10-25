@@ -9,6 +9,7 @@ public class DayManager : MonoBehaviour
 
     [Header("Enemies")]
     [SerializeField] private GameObject enemyToSpawn;
+    [SerializeField] private GameObject giantToSpawn;
     [Range(0, 10)]
     [SerializeField] int maxAmountEnemies = 4;
     [SerializeField] float enemiesWaitTimeSpawnWindow = 5f;
@@ -40,7 +41,7 @@ public class DayManager : MonoBehaviour
         float angleX = sunSource.transform.rotation.eulerAngles.x;
         sunSource.transform.Rotate(Vector3.right, dayCycleVelocity * Time.deltaTime);
 
-        if (angleX >= 200f)
+        if (angleX >= 200f && angleX <= 340f)
         {
             //Debug.Log("Nighty Nighty");
             if (!isNight)
@@ -55,6 +56,7 @@ public class DayManager : MonoBehaviour
     void StartNightPhase()
     {
         isNight = true;
+        SpawnGiant();
         StartCoroutine("SpawnEnemiesCoroutine");
     }
 
@@ -78,14 +80,15 @@ public class DayManager : MonoBehaviour
     }
 
     void SpawnEnemy()
-    {      
+    {
+        Vector3 pos = playerTransform.position;
         float x = Random.Range(-10f, 10f);
-        x *= 20f;
-        float y = 300f;
         float z = Random.Range(-10f, 10f);
+        x *= 20f;
         z *= 20f;
-        Vector3 pos = new Vector3(x, y, z);
-        pos += playerTransform.position;
+        pos.x += x;
+        pos.y += 300f;
+        pos.z += z;
 
         //Raycast down to get point where ground is
         RaycastHit hit;
@@ -95,6 +98,32 @@ public class DayManager : MonoBehaviour
             pos.y += 20f;
             enemyList.Add(Instantiate(enemyToSpawn, pos, Quaternion.identity));
             enemyCount++;
+        }
+    }
+
+    void SpawnGiant()       
+    {
+        Vector3 pos = playerTransform.position;
+        float x = Random.Range(-10f, 10f);
+        float z = Random.Range(-10f, 10f);
+        x *= 2000f;
+        z *= 2000f;
+        pos.x += x;
+        pos.y += 300f;
+        pos.z += z;
+
+        //Raycast down to get point where ground is
+        RaycastHit hit;
+        if (Physics.SphereCast(pos, 10f, Vector3.down, out hit))
+        {
+            pos = hit.point;
+            pos.y += 20f;
+            enemyList.Add(Instantiate(giantToSpawn, pos, Quaternion.identity));
+            enemyCount++;
+        }
+        else
+        {
+            SpawnGiant();
         }
     }
 
